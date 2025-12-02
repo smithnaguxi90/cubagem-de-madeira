@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProWood | Gestão de Cubagem</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+      body {
+        font-family: "Inter", sans-serif;
+      }
+
+      /* Input Number spin button remove */
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+
+      /* Custom Scrollbar for Table */
+      .custom-scrollbar::-webkit-scrollbar {
+        height: 8px;
+        width: 8px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #d6d3d1;
+        border-radius: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #a8a29e;
+      }
+
+      /* Toast Animation */
+      @keyframes slideIn {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      .toast-enter {
+        animation: slideIn 0.3s ease-out forwards;
+      }
+
+      /* Print Styles */
+      @media print {
+        .no-print {
+          display: none !important;
+        }
+        .print-only {
+          display: block !important;
+        }
+        body {
+          background: white;
+          color: black;
+        }
+        .shadow-md,
+        .shadow-lg {
+          box-shadow: none !important;
+        }
+        .border-t-4 {
+          border-top: none !important;
+        }
+        table {
+          font-size: 12px;
+          width: 100%;
+        }
+        th,
+        td {
+          border: 1px solid #ddd !important;
+          padding: 8px !important;
+        }
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              wood: {
+                50: "#fbf7f3",
+                100: "#f5ebe3",
+                200: "#eadbc8",
+                300: "#dec2a5",
+                400: "#d0a27e",
+                500: "#c5845a",
+                600: "#b96843",
+                700: "#9a5338",
+                800: "#7e4432",
+                900: "#66392c",
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-stone-50 text-stone-800 min-h-screen flex flex-col">
+    <!-- Toast Container -->
+    <div
+      id="toast-container"
+      class="fixed top-5 right-5 z-50 flex flex-col gap-2"
+    ></div>
+
+    <!-- Navbar -->
+    <nav
+      class="bg-white border-b border-stone-200 shadow-sm sticky top-0 z-30 no-print"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center gap-3">
+            <div class="bg-wood-600 text-white p-2 rounded-lg">
+              <i class="fa-solid fa-tree text-lg"></i>
+            </div>
+            <span class="font-bold text-xl tracking-tight text-stone-800"
+              >Pro<span class="text-wood-600">Wood</span></span
+            >
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="text-right hidden sm:block">
+              <p class="text-xs text-stone-400 uppercase font-semibold">
+                Volume Total
+              </p>
+              <p
+                class="text-lg font-bold text-wood-700 font-mono"
+                id="navTotalVolume"
+              >
+                0.00 m³
+              </p>
+            </div>
+            <div class="h-8 w-px bg-stone-200 hidden sm:block"></div>
+            <button
+              onclick="clearAll()"
+              class="text-stone-500 hover:text-red-600 transition"
+              title="Limpar Tudo"
+            >
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+      <!-- Dashboard Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Left Column: Form & Stats (4 cols) -->
+        <div class="lg:col-span-4 space-y-6 no-print">
+          <!-- Stats Cards -->
+          <div class="grid grid-cols-2 gap-4">
+            <div
+              class="bg-white p-4 rounded-xl shadow-sm border border-stone-100"
+            >
+              <p class="text-xs text-stone-500 uppercase font-semibold mb-1">
+                Peças
+              </p>
+              <h3 class="text-2xl font-bold text-stone-800" id="statCount">
+                0
+              </h3>
+            </div>
+            <div class="bg-wood-800 p-4 rounded-xl shadow-md text-white">
+              <p class="text-xs text-wood-200 uppercase font-semibold mb-1">
+                Volume (m³)
+              </p>
+              <h3 class="text-2xl font-bold font-mono" id="statVolume">0.00</h3>
+            </div>
+          </div>
+
+          <!-- Input Form -->
+          <div
+            class="bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden"
+          >
+            <div
+              class="bg-stone-50 px-6 py-4 border-b border-stone-200 flex justify-between items-center"
+            >
+              <h2 class="font-semibold text-stone-700 flex items-center gap-2">
+                <i class="fa-solid fa-pen-to-square text-wood-500"></i>
+                <span id="formTitle">Nova Entrada</span>
+              </h2>
+              <button
+                id="cancelEditBtn"
+                onclick="cancelEdit()"
+                class="hidden text-xs text-stone-500 hover:text-stone-800 underline"
+              >
+                Cancelar Edição
+              </button>
+            </div>
+
+            <form
+              id="woodForm"
+              onsubmit="event.preventDefault(); handleSubmit();"
+              class="p-6 space-y-4"
+            >
+              <input type="hidden" id="editId" value="" />
+
+              <!-- Descrição -->
+              <div>
+                <label
+                  class="block text-xs font-semibold text-stone-500 uppercase mb-1"
+                  >Descrição do Material</label
+                >
+                <div class="relative">
+                  <span
+                    class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-stone-400"
+                  >
+                    <i class="fa-solid fa-tag text-sm"></i>
+                  </span>
+                  <input
+                    type="text"
+                    id="desc"
+                    list="wood-types"
+                    class="pl-9 block w-full rounded-lg border-stone-200 bg-stone-50 border focus:bg-white focus:border-wood-500 focus:ring-wood-500 sm:text-sm p-2.5 transition"
+                    placeholder="Ex: Prancha Freijó"
+                    required
+                  />
+                </div>
+                <datalist id="wood-types">
+                  <option value="Prancha Freijó"></option>
+                  <option value="Prancha Cedrinho"></option>
+                  <option value="Prancha Ipê"></option>
+                  <option value="Viga Angelim"></option>
+                  <option value="Tábua Pinus"></option>
+                </datalist>
+              </div>
+
+              <!-- Dimensões Grid -->
+              <div class="grid grid-cols-2 gap-4">
+                <!-- Comprimento -->
+                <div>
+                  <label
+                    class="block text-xs font-semibold text-stone-500 uppercase mb-1"
+                    >Comp. (m)</label
+                  >
+                  <input
+                    type="text"
+                    inputmode="numeric"
+                    id="length"
+                    placeholder="0.00"
+                    oninput="formatDimension(this)"
+                    class="block w-full rounded-lg border-stone-200 bg-stone-50 border focus:bg-white focus:border-wood-500 focus:ring-wood-500 sm:text-sm p-2.5 font-mono"
+                    required
+                  />
+                </div>
+                <!-- Largura -->
+                <div>
+                  <label
+                    class="block text-xs font-semibold text-stone-500 uppercase mb-1"
+                    >Larg. (m)</label
+                  >
+                  <input
+                    type="text"
+                    inputmode="numeric"
+                    id="width"
+                    placeholder="0.00"
+                    oninput="formatDimension(this)"
+                    class="block w-full rounded-lg border-stone-200 bg-stone-50 border focus:bg-white focus:border-wood-500 focus:ring-wood-500 sm:text-sm p-2.5 font-mono"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <!-- Espessura -->
+                <div>
+                  <label
+                    class="block text-xs font-semibold text-stone-500 uppercase mb-1"
+                    >Esp. (m)</label
+                  >
+                  <input
+                    type="text"
+                    inputmode="numeric"
+                    id="thickness"
+                    placeholder="0.00"
+                    oninput="formatDimension(this)"
+                    class="block w-full rounded-lg border-stone-200 bg-stone-50 border focus:bg-white focus:border-wood-500 focus:ring-wood-500 sm:text-sm p-2.5 font-mono"
+                    required
+                  />
+                </div>
+                <!-- Quantidade -->
+                <div>
+                  <label
+                    class="block text-xs font-semibold text-stone-500 uppercase mb-1"
+                    >Qtd.</label
+                  >
+                  <div
+                    class="flex items-center border border-stone-200 rounded-lg bg-stone-50"
+                  >
+                    <button
+                      type="button"
+                      onclick="adjustQty(-1)"
+                      class="px-3 py-2 hover:bg-stone-200 text-stone-500 rounded-l-lg transition"
+                    >
+                      -
+                    </button>
+                    <input
+                      type="number"
+                      id="qty"
+                      value="1"
+                      min="1"
+                      class="w-full text-center bg-transparent border-none focus:ring-0 p-0 font-semibold text-stone-700"
+                      required
+                    />
+                    <button
+                      type="button"
+                      onclick="adjustQty(1)"
+                      class="px-3 py-2 hover:bg-stone-200 text-stone-500 rounded-r-lg transition"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+              <button
+                type="submit"
+                id="submitBtn"
+                class="w-full flex justify-center items-center gap-2 py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-wood-600 hover:bg-wood-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-wood-500 transition transform active:scale-95"
+              >
+                <i class="fa-solid fa-plus"></i> <span>Adicionar Registo</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Right Column: Table (8 cols) -->
+        <div class="lg:col-span-8 flex flex-col h-full">
+          <!-- Toolbar -->
+          <div
+            class="flex flex-col sm:flex-row justify-between items-center mb-4 gap-3 no-print"
+          >
+            <div class="relative w-full sm:w-64">
+              <span
+                class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-stone-400"
+              >
+                <i class="fa-solid fa-search"></i>
+              </span>
+              <input
+                type="text"
+                id="searchInput"
+                onkeyup="filterTable()"
+                placeholder="Pesquisar madeira..."
+                class="pl-10 block w-full rounded-lg border-stone-200 bg-white shadow-sm border focus:ring-wood-500 focus:border-wood-500 sm:text-sm p-2.5"
+              />
+            </div>
+            <div class="flex gap-2 w-full sm:w-auto">
+              <button
+                onclick="printReport()"
+                class="flex-1 sm:flex-none justify-center items-center gap-2 bg-white text-stone-700 border border-stone-200 hover:bg-stone-50 px-4 py-2 rounded-lg text-sm font-medium shadow-sm transition"
+              >
+                <i class="fa-solid fa-print"></i> Imprimir
+              </button>
+              <button
+                onclick="exportTableToCSV('relatorio_cubagem.csv')"
+                class="flex-1 sm:flex-none justify-center items-center gap-2 bg-emerald-600 text-white hover:bg-emerald-700 px-4 py-2 rounded-lg text-sm font-medium shadow-sm transition"
+              >
+                <i class="fa-solid fa-file-csv"></i> Excel/CSV
+              </button>
+            </div>
+          </div>
+
+          <!-- Print Header (Hidden normally) -->
+          <div class="hidden print-only mb-6">
+            <h1 class="text-2xl font-bold mb-2">
+              Relatório de Cubagem de Madeira
+            </h1>
+            <p class="text-sm text-gray-500" id="printDate"></p>
+          </div>
+
+          <!-- Table Card -->
+          <div
+            class="bg-white rounded-xl shadow-sm border border-stone-200 flex-grow flex flex-col overflow-hidden"
+          >
+            <div class="overflow-x-auto custom-scrollbar">
+              <table class="min-w-full divide-y divide-stone-200">
+                <thead class="bg-stone-50">
+                  <tr>
+                    <th
+                      scope="col"
+                      class="px-6 py-3 text-left text-xs font-bold text-stone-500 uppercase tracking-wider"
+                    >
+                      Descrição
+                    </th>
+                    <th
+                      scope="col"
+                      class="px-3 py-3 text-center text-xs font-bold text-stone-500 uppercase tracking-wider"
+                    >
+                      Dimensões (m)
+                    </th>
+                    <th
+                      scope="col"
+                      class="px-3 py-3 text-center text-xs font-bold text-stone-500 uppercase tracking-wider"
+                    >
+                      Qtd
+                    </th>
+                    <th
+                      scope="col"
+                      class="px-6 py-3 text-right text-xs font-bold text-stone-500 uppercase tracking-wider"
+                    >
+                      Volume (m³)
+                    </th>
+                    <th
+                      scope="col"
+                      class="px-6 py-3 text-center text-xs font-bold text-stone-500 uppercase tracking-wider no-print"
+                    >
+                      Ações
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  id="tableBody"
+                  class="bg-white divide-y divide-stone-200 text-sm"
+                >
+                  <!-- Rows -->
+                </tbody>
+                <tfoot class="bg-stone-50 font-semibold text-stone-700">
+                  <tr>
+                    <td
+                      colspan="2"
+                      class="px-6 py-3 text-right uppercase text-xs tracking-wider"
+                    >
+                      Totais
+                    </td>
+                    <td class="px-3 py-3 text-center" id="tableTotalQtd">0</td>
+                    <td
+                      class="px-6 py-3 text-right font-mono text-wood-700 text-base"
+                      id="tableTotalVol"
+                    >
+                      0.00
+                    </td>
+                    <td class="no-print"></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="bg-white border-t border-stone-200 mt-auto py-6 no-print">
+      <div class="max-w-7xl mx-auto px-4 text-center text-xs text-stone-400">
+        &copy; 2025 ProWood Calculator. Sistema Profissional de Cubagem.
+      </div>
+    </footer>
+
+    <script>
+      // --- State Management ---
+      let items = [];
+      let isEditing = false;
+      const STORAGE_KEY = "prowood_data_v1";
+
+      // --- Initialization ---
+      document.addEventListener("DOMContentLoaded", () => {
+        loadData();
+        // Se estiver vazio, carrega exemplo
+        if (items.length === 0) {
+          items = [
+            {
+              id: 101,
+              desc: "Prancha Freijó",
+              length: 4.31,
+              width: 0.34,
+              thickness: 0.08,
+              qty: 1,
+              volume: 0.117232,
+            },
+            {
+              id: 102,
+              desc: "Prancha Cedrinho",
+              length: 3.5,
+              width: 0.25,
+              thickness: 0.04,
+              qty: 6,
+              volume: 0.21,
+            },
+            {
+              id: 103,
+              desc: "Prancha Ipê",
+              length: 5.0,
+              width: 0.4,
+              thickness: 0.06,
+              qty: 2,
+              volume: 0.24,
+            },
+          ];
+          saveData();
+        }
+        renderTable();
+        document.getElementById("printDate").innerText =
+          new Date().toLocaleString("pt-PT");
+      });
+
+      // --- Persistence ---
+      function saveData() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+        renderTable();
+      }
+
+      function loadData() {
+        const data = localStorage.getItem(STORAGE_KEY);
+        if (data) items = JSON.parse(data);
+      }
+
+      // --- Core Logic ---
+
+      // Input Masking Logic (Divide by 100)
+      function formatDimension(input) {
+        let value = input.value.replace(/\D/g, "");
+        if (value === "") {
+          input.value = "";
+          return;
+        }
+        let formattedValue = (parseInt(value) / 100).toFixed(2);
+        input.value = formattedValue;
+      }
+
+      function adjustQty(change) {
+        const input = document.getElementById("qty");
+        let val = parseInt(input.value) || 0;
+        val = Math.max(1, val + change);
+        input.value = val;
+      }
+
+      function handleSubmit() {
+        const desc = document.getElementById("desc").value;
+        const length = parseFloat(document.getElementById("length").value);
+        const width = parseFloat(document.getElementById("width").value);
+        const thickness = parseFloat(
+          document.getElementById("thickness").value
+        );
+        const qty = parseInt(document.getElementById("qty").value);
+        const editId = document.getElementById("editId").value;
+
+        if (
+          !desc ||
+          isNaN(length) ||
+          isNaN(width) ||
+          isNaN(thickness) ||
+          isNaN(qty)
+        ) {
+          showToast(
+            "Por favor, preencha todos os campos corretamente.",
+            "error"
+          );
+          return;
+        }
+
+        const volume = length * width * thickness * qty;
+
+        if (isEditing && editId) {
+          // Update Existing
+          const index = items.findIndex((i) => i.id == editId);
+          if (index !== -1) {
+            items[index] = {
+              id: parseInt(editId),
+              desc,
+              length,
+              width,
+              thickness,
+              qty,
+              volume,
+            };
+            showToast("Registo atualizado com sucesso!", "success");
+          }
+          cancelEdit();
+        } else {
+          // Create New
+          const newItem = {
+            id: Date.now(),
+            desc,
+            length,
+            width,
+            thickness,
+            qty,
+            volume,
+          };
+          items.push(newItem);
+          showToast("Peça adicionada à lista.", "success");
+
+          // Clear inputs but keep desc focus logic
+          resetForm(false);
+        }
+        saveData();
+      }
+
+      function resetForm(fullClear = true) {
+        document.getElementById("length").value = "";
+        document.getElementById("width").value = ""; // Optional: keep width/thick if repetitive
+        document.getElementById("thickness").value = "";
+        document.getElementById("qty").value = "1";
+        if (fullClear) document.getElementById("desc").value = "";
+        document.getElementById("desc").focus();
+      }
+
+      // --- Edit / Delete ---
+
+      function deleteItem(id) {
+        if (confirm("Deseja eliminar este item?")) {
+          items = items.filter((item) => item.id !== id);
+          saveData();
+          showToast("Item removido.", "info");
+          if (isEditing) cancelEdit();
+        }
+      }
+
+      function editItem(id) {
+        const item = items.find((i) => i.id === id);
+        if (!item) return;
+
+        // Enter Edit Mode
+        isEditing = true;
+        document.getElementById("editId").value = item.id;
+        document.getElementById("formTitle").textContent = "Editar Entrada";
+        document.getElementById(
+          "submitBtn"
+        ).innerHTML = `<i class="fa-solid fa-save"></i> <span>Salvar Alterações</span>`;
+        document
+          .getElementById("submitBtn")
+          .classList.remove("bg-wood-600", "hover:bg-wood-700");
+        document
+          .getElementById("submitBtn")
+          .classList.add("bg-blue-600", "hover:bg-blue-700");
+        document.getElementById("cancelEditBtn").classList.remove("hidden");
+
+        // Populate Form
+        document.getElementById("desc").value = item.desc;
+        document.getElementById("length").value = item.length.toFixed(2);
+        document.getElementById("width").value = item.width.toFixed(2);
+        document.getElementById("thickness").value = item.thickness.toFixed(2);
+        document.getElementById("qty").value = item.qty;
+
+        // Highlight row logic could go here
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function cancelEdit() {
+        isEditing = false;
+        document.getElementById("editId").value = "";
+        document.getElementById("formTitle").textContent = "Nova Entrada";
+        document.getElementById(
+          "submitBtn"
+        ).innerHTML = `<i class="fa-solid fa-plus"></i> <span>Adicionar Registo</span>`;
+        document
+          .getElementById("submitBtn")
+          .classList.add("bg-wood-600", "hover:bg-wood-700");
+        document
+          .getElementById("submitBtn")
+          .classList.remove("bg-blue-600", "hover:bg-blue-700");
+        document.getElementById("cancelEditBtn").classList.add("hidden");
+        resetForm(true);
+      }
+
+      function clearAll() {
+        if (items.length === 0) return;
+        if (
+          confirm(
+            "Atenção: Isto irá apagar toda a lista permanentemente.\nDeseja continuar?"
+          )
+        ) {
+          items = [];
+          saveData();
+          cancelEdit();
+          showToast("Lista limpa com sucesso.", "info");
+        }
+      }
+
+      // --- Rendering ---
+
+      function renderTable() {
+        const tbody = document.getElementById("tableBody");
+        const filterText = document
+          .getElementById("searchInput")
+          .value.toLowerCase();
+        tbody.innerHTML = "";
+
+        let totalVol = 0;
+        let totalQtd = 0;
+        let displayCount = 0;
+
+        const filteredItems = items.filter((item) =>
+          item.desc.toLowerCase().includes(filterText)
+        );
+
+        if (filteredItems.length === 0) {
+          tbody.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="px-6 py-12 text-center text-stone-400">
+                            <div class="flex flex-col items-center">
+                                <i class="fa-solid fa-clipboard-list text-4xl mb-3 opacity-20"></i>
+                                <p>Nenhum registo encontrado.</p>
+                            </div>
+                        </td>
+                    </tr>`;
+        } else {
+          // Reverse to show newest first
+          [...filteredItems].reverse().forEach((item) => {
+            const row = document.createElement("tr");
+            row.className = "hover:bg-stone-50 transition group";
+            row.innerHTML = `
+                        <td class="px-6 py-4 whitespace-nowrap text-stone-900 font-medium">
+                            ${item.desc}
+                        </td>
+                        <td class="px-3 py-4 whitespace-nowrap text-center text-stone-500 font-mono text-xs">
+                            ${item.length.toFixed(2)} x ${item.width.toFixed(
+              2
+            )} x ${item.thickness.toFixed(2)}
+                        </td>
+                        <td class="px-3 py-4 whitespace-nowrap text-center text-stone-700 font-bold">
+                            ${item.qty}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-stone-900 font-mono font-bold">
+                            ${item.volume.toFixed(2)}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-center no-print">
+                            <div class="flex justify-center gap-2 opacity-50 group-hover:opacity-100 transition">
+                                <button onclick="editItem(${
+                                  item.id
+                                })" class="text-blue-500 hover:text-blue-700 p-1" title="Editar">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                                <button onclick="deleteItem(${
+                                  item.id
+                                })" class="text-red-400 hover:text-red-600 p-1" title="Eliminar">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    `;
+            tbody.appendChild(row);
+          });
+        }
+
+        // Calculate Totals (Always based on ALL items, or filtered? Usually filtered is better for reports)
+        filteredItems.forEach((i) => {
+          totalVol += i.volume;
+          totalQtd += i.qty;
+        });
+
+        // Update UI
+        const formattedTotalVol = totalVol.toFixed(2) + " m³";
+        document.getElementById("navTotalVolume").textContent =
+          formattedTotalVol;
+        document.getElementById("statVolume").textContent = totalVol.toFixed(2);
+        document.getElementById("statCount").textContent = totalQtd;
+
+        document.getElementById("tableTotalQtd").textContent = totalQtd;
+        document.getElementById("tableTotalVol").textContent =
+          formattedTotalVol;
+      }
+
+      function filterTable() {
+        renderTable();
+      }
+
+      // --- Utilities ---
+
+      function showToast(message, type = "success") {
+        const container = document.getElementById("toast-container");
+        const toast = document.createElement("div");
+
+        // Colors based on type
+        let bgClass =
+          type === "error"
+            ? "bg-red-500"
+            : type === "info"
+            ? "bg-stone-600"
+            : "bg-emerald-600";
+        let icon =
+          type === "error"
+            ? "fa-circle-exclamation"
+            : type === "info"
+            ? "fa-circle-info"
+            : "fa-check-circle";
+
+        toast.className = `${bgClass} text-white px-6 py-3 rounded-lg shadow-lg flex items-center gap-3 min-w-[300px] toast-enter`;
+        toast.innerHTML = `
+                <i class="fa-solid ${icon}"></i>
+                <span class="font-medium text-sm">${message}</span>
+            `;
+
+        container.appendChild(toast);
+
+        // Remove after 3 seconds
+        setTimeout(() => {
+          toast.style.opacity = "0";
+          toast.style.transform = "translateY(-10px)";
+          toast.style.transition = "all 0.3s ease";
+          setTimeout(() => toast.remove(), 300);
+        }, 3000);
+      }
+
+      function exportTableToCSV(filename) {
+        if (items.length === 0) {
+          showToast("Não há dados para exportar.", "error");
+          return;
+        }
+
+        let csv = [];
+        csv.push(
+          "\uFEFFDescricao;Comprimento;Largura;Espessura;Quantidade;Volume M3"
+        ); // Added BOM for Excel UTF-8
+
+        items.forEach((item) => {
+          let row = [
+            `"${item.desc}"`,
+            item.length.toFixed(3).replace(".", ","), // PT Format
+            item.width.toFixed(3).replace(".", ","),
+            item.thickness.toFixed(3).replace(".", ","),
+            item.qty,
+            item.volume.toFixed(6).replace(".", ","),
+          ];
+          csv.push(row.join(";")); // Semicolon for European CSV
+        });
+
+        let totalV = items.reduce((acc, curr) => acc + curr.volume, 0);
+        csv.push(`;;;;TOTAL;${totalV.toFixed(6).replace(".", ",")}`);
+
+        downloadCSV(csv.join("\n"), filename);
+        showToast("Ficheiro CSV gerado.", "success");
+      }
+
+      function downloadCSV(csv, filename) {
+        let csvFile;
+        let downloadLink;
+        csvFile = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+        downloadLink = document.createElement("a");
+        downloadLink.download = filename;
+        downloadLink.href = window.URL.createObjectURL(csvFile);
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+      }
+
+      function printReport() {
+        window.print();
+      }
+    </script>
+  </body>
+</html>
