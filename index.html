@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ProWood | Gestão de Cubagem</title>
+    <title>CubagemPro | Gestão de Madeira</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -127,8 +127,9 @@
             <div class="bg-wood-600 text-white p-2 rounded-lg">
               <i class="fa-solid fa-tree text-lg"></i>
             </div>
+            <!-- NOME DO SITE AQUI -->
             <span class="font-bold text-xl tracking-tight text-stone-800"
-              >Pro<span class="text-wood-600">Wood</span></span
+              >Cubagem<span class="text-wood-600">Pro</span></span
             >
           </div>
           <div class="flex items-center gap-4">
@@ -231,11 +232,9 @@
                   />
                 </div>
                 <datalist id="wood-types">
-                  <option value="Prancha Freijó"></option>
                   <option value="Prancha Cedrinho"></option>
+                  <option value="Prancha Freijó"></option>
                   <option value="Prancha Ipê"></option>
-                  <option value="Viga Angelim"></option>
-                  <option value="Tábua Pinus"></option>
                 </datalist>
               </div>
 
@@ -456,7 +455,8 @@
 
     <footer class="bg-white border-t border-stone-200 mt-auto py-6 no-print">
       <div class="max-w-7xl mx-auto px-4 text-center text-xs text-stone-400">
-        &copy; 2025 ProWood Calculator. Sistema Profissional de Cubagem.
+        &copy; Copyright CubagemPro 2025 - Todos os direitos reservados.<br />
+        Desenvolvido por Jefferson de Araújo Silva
       </div>
     </footer>
 
@@ -464,44 +464,14 @@
       // --- State Management ---
       let items = [];
       let isEditing = false;
-      const STORAGE_KEY = "prowood_data_v1";
+      const STORAGE_KEY = "cubagempro_data_v1"; // Atualizei a chave de armazenamento para o novo nome
 
       // --- Initialization ---
       document.addEventListener("DOMContentLoaded", () => {
         loadData();
-        // Se estiver vazio, carrega exemplo
-        if (items.length === 0) {
-          items = [
-            {
-              id: 101,
-              desc: "Prancha Freijó",
-              length: 4.31,
-              width: 0.34,
-              thickness: 0.08,
-              qty: 1,
-              volume: 0.117232,
-            },
-            {
-              id: 102,
-              desc: "Prancha Cedrinho",
-              length: 3.5,
-              width: 0.25,
-              thickness: 0.04,
-              qty: 6,
-              volume: 0.21,
-            },
-            {
-              id: 103,
-              desc: "Prancha Ipê",
-              length: 5.0,
-              width: 0.4,
-              thickness: 0.06,
-              qty: 2,
-              volume: 0.24,
-            },
-          ];
-          saveData();
-        }
+        // REMOVIDO: Código que carregava dados de exemplo se a lista estivesse vazia.
+        // Agora a aplicação inicia limpa (zerada).
+
         renderTable();
         document.getElementById("printDate").innerText =
           new Date().toLocaleString("pt-PT");
