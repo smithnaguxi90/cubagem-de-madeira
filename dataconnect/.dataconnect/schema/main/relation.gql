@@ -1,0 +1,1083 @@
+extend type Container {
+  """
+  ✨ List `LoadingPlan` objects in a one-to-many relationship (where `LoadingPlan`.`container` is this object).
+  """
+  loadingPlans_on_container(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: LoadingPlan_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [LoadingPlan_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: LoadingPlan_Having
+  ): [LoadingPlan!]! @fdc_generated(from: "LoadingPlan.container", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "Container", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `Container` table.
+  """
+  _count: Int! @fdc_generated(from: "Container.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Container` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Container.createdAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Container` table where the `description` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  description_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Container.description", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Container` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Container.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Container` table where the `internalHeight` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  internalHeight_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Container.internalHeight", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Container` table where the `internalLength` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  internalLength_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Container.internalLength", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Container` table where the `internalWidth` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  internalWidth_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Container.internalWidth", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Container` table where the `maxWeightCapacity` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  maxWeightCapacity_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Container.maxWeightCapacity", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Container` table where the `name` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  name_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Container.name", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Container` table where the `type` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  type_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Container.type", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Container` table where the `userId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  userId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Container.userId", purpose: QUERY_COUNT)
+  """
+  ✨ Sum the `internalHeight` field in the `Container` table.
+  """
+  internalHeight_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "Container.internalHeight", purpose: QUERY_SUM)
+  """
+  ✨ Sum the `internalLength` field in the `Container` table.
+  """
+  internalLength_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "Container.internalLength", purpose: QUERY_SUM)
+  """
+  ✨ Sum the `internalWidth` field in the `Container` table.
+  """
+  internalWidth_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "Container.internalWidth", purpose: QUERY_SUM)
+  """
+  ✨ Sum the `maxWeightCapacity` field in the `Container` table.
+  """
+  maxWeightCapacity_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "Container.maxWeightCapacity", purpose: QUERY_SUM)
+  """
+  ✨ Average the `internalHeight` field in the `Container` table.
+  """
+  internalHeight_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "Container.internalHeight", purpose: QUERY_AVG)
+  """
+  ✨ Average the `internalLength` field in the `Container` table.
+  """
+  internalLength_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "Container.internalLength", purpose: QUERY_AVG)
+  """
+  ✨ Average the `internalWidth` field in the `Container` table.
+  """
+  internalWidth_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "Container.internalWidth", purpose: QUERY_AVG)
+  """
+  ✨ Average the `maxWeightCapacity` field in the `Container` table.
+  """
+  maxWeightCapacity_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "Container.maxWeightCapacity", purpose: QUERY_AVG)
+  """
+  ✨ Minimum of the `createdAt` field in the `Container` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "Container.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `internalHeight` field in the `Container` table.
+  """
+  internalHeight_min: Float @fdc_generated(from: "Container.internalHeight", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `internalLength` field in the `Container` table.
+  """
+  internalLength_min: Float @fdc_generated(from: "Container.internalLength", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `internalWidth` field in the `Container` table.
+  """
+  internalWidth_min: Float @fdc_generated(from: "Container.internalWidth", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `maxWeightCapacity` field in the `Container` table.
+  """
+  maxWeightCapacity_min: Float @fdc_generated(from: "Container.maxWeightCapacity", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `Container` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "Container.createdAt", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `internalHeight` field in the `Container` table.
+  """
+  internalHeight_max: Float @fdc_generated(from: "Container.internalHeight", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `internalLength` field in the `Container` table.
+  """
+  internalLength_max: Float @fdc_generated(from: "Container.internalLength", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `internalWidth` field in the `Container` table.
+  """
+  internalWidth_max: Float @fdc_generated(from: "Container.internalWidth", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `maxWeightCapacity` field in the `Container` table.
+  """
+  maxWeightCapacity_max: Float @fdc_generated(from: "Container.maxWeightCapacity", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "Container.id", purpose: GLOBAL_ID)
+}
+extend type Item {
+  """
+  ✨ List `LoadingPlanItem` objects in a one-to-many relationship (where `LoadingPlanItem`.`item` is this object).
+  """
+  loadingPlanItems_on_item(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: LoadingPlanItem_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [LoadingPlanItem_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: LoadingPlanItem_Having
+  ): [LoadingPlanItem!]! @fdc_generated(from: "LoadingPlanItem.item", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "Item", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `Item` table.
+  """
+  _count: Int! @fdc_generated(from: "Item.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Item` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Item.createdAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Item` table where the `description` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  description_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Item.description", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Item` table where the `height` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  height_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Item.height", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Item` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Item.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Item` table where the `length` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  length_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Item.length", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Item` table where the `name` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  name_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Item.name", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Item` table where the `rotatable` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  rotatable_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Item.rotatable", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Item` table where the `stackable` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  stackable_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Item.stackable", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Item` table where the `userId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  userId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Item.userId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Item` table where the `weight` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  weight_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Item.weight", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Item` table where the `width` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  width_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Item.width", purpose: QUERY_COUNT)
+  """
+  ✨ Sum the `height` field in the `Item` table.
+  """
+  height_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "Item.height", purpose: QUERY_SUM)
+  """
+  ✨ Sum the `length` field in the `Item` table.
+  """
+  length_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "Item.length", purpose: QUERY_SUM)
+  """
+  ✨ Sum the `weight` field in the `Item` table.
+  """
+  weight_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "Item.weight", purpose: QUERY_SUM)
+  """
+  ✨ Sum the `width` field in the `Item` table.
+  """
+  width_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "Item.width", purpose: QUERY_SUM)
+  """
+  ✨ Average the `height` field in the `Item` table.
+  """
+  height_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "Item.height", purpose: QUERY_AVG)
+  """
+  ✨ Average the `length` field in the `Item` table.
+  """
+  length_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "Item.length", purpose: QUERY_AVG)
+  """
+  ✨ Average the `weight` field in the `Item` table.
+  """
+  weight_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "Item.weight", purpose: QUERY_AVG)
+  """
+  ✨ Average the `width` field in the `Item` table.
+  """
+  width_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "Item.width", purpose: QUERY_AVG)
+  """
+  ✨ Minimum of the `createdAt` field in the `Item` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "Item.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `height` field in the `Item` table.
+  """
+  height_min: Float @fdc_generated(from: "Item.height", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `length` field in the `Item` table.
+  """
+  length_min: Float @fdc_generated(from: "Item.length", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `weight` field in the `Item` table.
+  """
+  weight_min: Float @fdc_generated(from: "Item.weight", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `width` field in the `Item` table.
+  """
+  width_min: Float @fdc_generated(from: "Item.width", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `Item` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "Item.createdAt", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `height` field in the `Item` table.
+  """
+  height_max: Float @fdc_generated(from: "Item.height", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `length` field in the `Item` table.
+  """
+  length_max: Float @fdc_generated(from: "Item.length", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `weight` field in the `Item` table.
+  """
+  weight_max: Float @fdc_generated(from: "Item.weight", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `width` field in the `Item` table.
+  """
+  width_max: Float @fdc_generated(from: "Item.width", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "Item.id", purpose: GLOBAL_ID)
+}
+extend type LoadingPlan {
+  """
+  ✨ List `LoadingPlanItem` objects in a one-to-many relationship (where `LoadingPlanItem`.`loadingPlan` is this object).
+  """
+  loadingPlanItems_on_loadingPlan(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: LoadingPlanItem_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [LoadingPlanItem_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: LoadingPlanItem_Having
+  ): [LoadingPlanItem!]! @fdc_generated(from: "LoadingPlanItem.loadingPlan", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "LoadingPlan", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `LoadingPlan` table.
+  """
+  _count: Int! @fdc_generated(from: "LoadingPlan.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `LoadingPlan` table where the `containerId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  containerId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "LoadingPlan.containerId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `LoadingPlan` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "LoadingPlan.createdAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `LoadingPlan` table where the `description` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  description_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "LoadingPlan.description", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `LoadingPlan` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "LoadingPlan.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `LoadingPlan` table where the `name` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  name_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "LoadingPlan.name", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `LoadingPlan` table where the `totalVolumeUsed` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  totalVolumeUsed_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "LoadingPlan.totalVolumeUsed", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `LoadingPlan` table where the `totalWeightLoaded` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  totalWeightLoaded_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "LoadingPlan.totalWeightLoaded", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `LoadingPlan` table where the `updatedAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  updatedAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "LoadingPlan.updatedAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `LoadingPlan` table where the `userId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  userId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "LoadingPlan.userId", purpose: QUERY_COUNT)
+  """
+  ✨ Sum the `totalVolumeUsed` field in the `LoadingPlan` table.
+  """
+  totalVolumeUsed_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "LoadingPlan.totalVolumeUsed", purpose: QUERY_SUM)
+  """
+  ✨ Sum the `totalWeightLoaded` field in the `LoadingPlan` table.
+  """
+  totalWeightLoaded_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "LoadingPlan.totalWeightLoaded", purpose: QUERY_SUM)
+  """
+  ✨ Average the `totalVolumeUsed` field in the `LoadingPlan` table.
+  """
+  totalVolumeUsed_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "LoadingPlan.totalVolumeUsed", purpose: QUERY_AVG)
+  """
+  ✨ Average the `totalWeightLoaded` field in the `LoadingPlan` table.
+  """
+  totalWeightLoaded_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "LoadingPlan.totalWeightLoaded", purpose: QUERY_AVG)
+  """
+  ✨ Minimum of the `createdAt` field in the `LoadingPlan` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "LoadingPlan.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `totalVolumeUsed` field in the `LoadingPlan` table.
+  """
+  totalVolumeUsed_min: Float @fdc_generated(from: "LoadingPlan.totalVolumeUsed", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `totalWeightLoaded` field in the `LoadingPlan` table.
+  """
+  totalWeightLoaded_min: Float @fdc_generated(from: "LoadingPlan.totalWeightLoaded", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `updatedAt` field in the `LoadingPlan` table.
+  """
+  updatedAt_min: Timestamp @fdc_generated(from: "LoadingPlan.updatedAt", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `LoadingPlan` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "LoadingPlan.createdAt", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `totalVolumeUsed` field in the `LoadingPlan` table.
+  """
+  totalVolumeUsed_max: Float @fdc_generated(from: "LoadingPlan.totalVolumeUsed", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `totalWeightLoaded` field in the `LoadingPlan` table.
+  """
+  totalWeightLoaded_max: Float @fdc_generated(from: "LoadingPlan.totalWeightLoaded", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `updatedAt` field in the `LoadingPlan` table.
+  """
+  updatedAt_max: Timestamp @fdc_generated(from: "LoadingPlan.updatedAt", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "LoadingPlan.id", purpose: GLOBAL_ID)
+}
+extend type LoadingPlanItem {
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "LoadingPlanItem", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `LoadingPlanItem` table.
+  """
+  _count: Int! @fdc_generated(from: "LoadingPlanItem.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `LoadingPlanItem` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "LoadingPlanItem.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `LoadingPlanItem` table where the `itemId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  itemId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "LoadingPlanItem.itemId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `LoadingPlanItem` table where the `loadingPlanId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  loadingPlanId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "LoadingPlanItem.loadingPlanId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `LoadingPlanItem` table where the `notes` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  notes_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "LoadingPlanItem.notes", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `LoadingPlanItem` table where the `orientation` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  orientation_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "LoadingPlanItem.orientation", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `LoadingPlanItem` table where the `positionX` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  positionX_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "LoadingPlanItem.positionX", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `LoadingPlanItem` table where the `positionY` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  positionY_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "LoadingPlanItem.positionY", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `LoadingPlanItem` table where the `positionZ` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  positionZ_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "LoadingPlanItem.positionZ", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `LoadingPlanItem` table where the `quantity` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  quantity_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "LoadingPlanItem.quantity", purpose: QUERY_COUNT)
+  """
+  ✨ Sum the `positionX` field in the `LoadingPlanItem` table.
+  """
+  positionX_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "LoadingPlanItem.positionX", purpose: QUERY_SUM)
+  """
+  ✨ Sum the `positionY` field in the `LoadingPlanItem` table.
+  """
+  positionY_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "LoadingPlanItem.positionY", purpose: QUERY_SUM)
+  """
+  ✨ Sum the `positionZ` field in the `LoadingPlanItem` table.
+  """
+  positionZ_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "LoadingPlanItem.positionZ", purpose: QUERY_SUM)
+  """
+  ✨ Sum the `quantity` field in the `LoadingPlanItem` table.
+  """
+  quantity_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Int @fdc_generated(from: "LoadingPlanItem.quantity", purpose: QUERY_SUM)
+  """
+  ✨ Average the `positionX` field in the `LoadingPlanItem` table.
+  """
+  positionX_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "LoadingPlanItem.positionX", purpose: QUERY_AVG)
+  """
+  ✨ Average the `positionY` field in the `LoadingPlanItem` table.
+  """
+  positionY_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "LoadingPlanItem.positionY", purpose: QUERY_AVG)
+  """
+  ✨ Average the `positionZ` field in the `LoadingPlanItem` table.
+  """
+  positionZ_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "LoadingPlanItem.positionZ", purpose: QUERY_AVG)
+  """
+  ✨ Average the `quantity` field in the `LoadingPlanItem` table.
+  """
+  quantity_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "LoadingPlanItem.quantity", purpose: QUERY_AVG)
+  """
+  ✨ Minimum of the `positionX` field in the `LoadingPlanItem` table.
+  """
+  positionX_min: Float @fdc_generated(from: "LoadingPlanItem.positionX", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `positionY` field in the `LoadingPlanItem` table.
+  """
+  positionY_min: Float @fdc_generated(from: "LoadingPlanItem.positionY", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `positionZ` field in the `LoadingPlanItem` table.
+  """
+  positionZ_min: Float @fdc_generated(from: "LoadingPlanItem.positionZ", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `quantity` field in the `LoadingPlanItem` table.
+  """
+  quantity_min: Int @fdc_generated(from: "LoadingPlanItem.quantity", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `positionX` field in the `LoadingPlanItem` table.
+  """
+  positionX_max: Float @fdc_generated(from: "LoadingPlanItem.positionX", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `positionY` field in the `LoadingPlanItem` table.
+  """
+  positionY_max: Float @fdc_generated(from: "LoadingPlanItem.positionY", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `positionZ` field in the `LoadingPlanItem` table.
+  """
+  positionZ_max: Float @fdc_generated(from: "LoadingPlanItem.positionZ", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `quantity` field in the `LoadingPlanItem` table.
+  """
+  quantity_max: Int @fdc_generated(from: "LoadingPlanItem.quantity", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "LoadingPlanItem.id", purpose: GLOBAL_ID)
+}
+extend type User {
+  """
+  ✨ List `Container` objects in a one-to-many relationship (where `Container`.`user` is this object).
+  """
+  containers_on_user(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Container_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Container_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Container_Having
+  ): [Container!]! @fdc_generated(from: "Container.user", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `Item` objects in a one-to-many relationship (where `Item`.`user` is this object).
+  """
+  items_on_user(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Item_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Item_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Item_Having
+  ): [Item!]! @fdc_generated(from: "Item.user", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `LoadingPlan` objects in a one-to-many relationship (where `LoadingPlan`.`user` is this object).
+  """
+  loadingPlans_on_user(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: LoadingPlan_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [LoadingPlan_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: LoadingPlan_Having
+  ): [LoadingPlan!]! @fdc_generated(from: "LoadingPlan.user", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "User", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `User` table.
+  """
+  _count: Int! @fdc_generated(from: "User.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `companyName` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  companyName_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.companyName", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.createdAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `displayName` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  displayName_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.displayName", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `email` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  email_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.email", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `photoUrl` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  photoUrl_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.photoUrl", purpose: QUERY_COUNT)
+  """
+  ✨ Minimum of the `createdAt` field in the `User` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "User.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `User` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "User.createdAt", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "User.id", purpose: GLOBAL_ID)
+}

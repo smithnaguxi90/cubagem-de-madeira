@@ -1,0 +1,54 @@
+type User @table {
+  displayName: String!
+  email: String!
+  createdAt: Timestamp!
+  photoUrl: String
+  companyName: String
+}
+
+type Item @table {
+  user: User
+  name: String!
+  length: Float!
+  width: Float!
+  height: Float!
+  weight: Float!
+  createdAt: Timestamp!
+  description: String
+  stackable: Boolean
+  rotatable: Boolean
+}
+
+type Container @table {
+  user: User
+  name: String!
+  internalLength: Float!
+  internalWidth: Float!
+  internalHeight: Float!
+  maxWeightCapacity: Float!
+  createdAt: Timestamp!
+  type: String
+  description: String
+}
+
+type LoadingPlan @table {
+  user: User
+  container: Container!
+  name: String!
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  description: String
+  totalVolumeUsed: Float
+  totalWeightLoaded: Float
+}
+
+type LoadingPlanItem @table {
+  loadingPlan: LoadingPlan!
+  item: Item!
+  quantity: Int!
+  positionX: Float!
+  positionY: Float!
+  positionZ: Float!
+  orientation: String!
+  notes: String
+}

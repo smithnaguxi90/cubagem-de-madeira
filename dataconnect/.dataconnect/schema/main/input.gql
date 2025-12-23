@@ -1,0 +1,2305 @@
+"""
+✨ `Container_KeyOutput` returns the primary key fields of table type `Container`.
+
+It has the same format as `Container_Key`, but is only used as mutation return value.
+"""
+scalar Container_KeyOutput
+"""
+✨ `Item_KeyOutput` returns the primary key fields of table type `Item`.
+
+It has the same format as `Item_Key`, but is only used as mutation return value.
+"""
+scalar Item_KeyOutput
+"""
+✨ `LoadingPlan_KeyOutput` returns the primary key fields of table type `LoadingPlan`.
+
+It has the same format as `LoadingPlan_Key`, but is only used as mutation return value.
+"""
+scalar LoadingPlan_KeyOutput
+"""
+✨ `LoadingPlanItem_KeyOutput` returns the primary key fields of table type `LoadingPlanItem`.
+
+It has the same format as `LoadingPlanItem_Key`, but is only used as mutation return value.
+"""
+scalar LoadingPlanItem_KeyOutput
+"""
+✨ `User_KeyOutput` returns the primary key fields of table type `User`.
+
+It has the same format as `User_Key`, but is only used as mutation return value.
+"""
+scalar User_KeyOutput
+"""
+✨ Generated data input type for table 'Container'. It includes all necessary fields for creating or upserting rows into table.
+"""
+input Container_Data {
+  """
+  ✨ Generated from Field `Container`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Container`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+  """
+  ✨ Generated from Field `Container`.`userId` of type `UUID`
+  """
+  userId: UUID
+  """
+  ✨ `_expr` server value variant of `userId` (✨ Generated from Field `Container`.`userId` of type `UUID`)
+  """
+  userId_expr: UUID_Expr
+  """
+  ✨ Generated from Field `Container`.`user` of type `User`
+  """
+  user: User_Key
+  """
+  ✨ Generated from Field `Container`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `Container`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_expr: Timestamp_Expr
+  """
+  ✨ `_time` server value variant of `createdAt` (✨ Generated from Field `Container`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_time: Timestamp_Relative
+  """
+  ✨ `_update` server value variant of `createdAt` (✨ Generated from Field `Container`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_update: [Timestamp_Update!]
+  """
+  ✨ Generated from Field `Container`.`description` of type `String`
+  """
+  description: String
+  """
+  ✨ `_expr` server value variant of `description` (✨ Generated from Field `Container`.`description` of type `String`)
+  """
+  description_expr: String_Expr
+  """
+  ✨ Generated from Field `Container`.`internalHeight` of type `Float!`
+  """
+  internalHeight: Float
+  """
+  ✨ `_expr` server value variant of `internalHeight` (✨ Generated from Field `Container`.`internalHeight` of type `Float!`)
+  """
+  internalHeight_expr: Float_Expr
+  """
+  ✨ `_update` server value variant of `internalHeight` (✨ Generated from Field `Container`.`internalHeight` of type `Float!`)
+  """
+  internalHeight_update: [Float_Update!]
+  """
+  ✨ Generated from Field `Container`.`internalLength` of type `Float!`
+  """
+  internalLength: Float
+  """
+  ✨ `_expr` server value variant of `internalLength` (✨ Generated from Field `Container`.`internalLength` of type `Float!`)
+  """
+  internalLength_expr: Float_Expr
+  """
+  ✨ `_update` server value variant of `internalLength` (✨ Generated from Field `Container`.`internalLength` of type `Float!`)
+  """
+  internalLength_update: [Float_Update!]
+  """
+  ✨ Generated from Field `Container`.`internalWidth` of type `Float!`
+  """
+  internalWidth: Float
+  """
+  ✨ `_expr` server value variant of `internalWidth` (✨ Generated from Field `Container`.`internalWidth` of type `Float!`)
+  """
+  internalWidth_expr: Float_Expr
+  """
+  ✨ `_update` server value variant of `internalWidth` (✨ Generated from Field `Container`.`internalWidth` of type `Float!`)
+  """
+  internalWidth_update: [Float_Update!]
+  """
+  ✨ Generated from Field `Container`.`maxWeightCapacity` of type `Float!`
+  """
+  maxWeightCapacity: Float
+  """
+  ✨ `_expr` server value variant of `maxWeightCapacity` (✨ Generated from Field `Container`.`maxWeightCapacity` of type `Float!`)
+  """
+  maxWeightCapacity_expr: Float_Expr
+  """
+  ✨ `_update` server value variant of `maxWeightCapacity` (✨ Generated from Field `Container`.`maxWeightCapacity` of type `Float!`)
+  """
+  maxWeightCapacity_update: [Float_Update!]
+  """
+  ✨ Generated from Field `Container`.`name` of type `String!`
+  """
+  name: String
+  """
+  ✨ `_expr` server value variant of `name` (✨ Generated from Field `Container`.`name` of type `String!`)
+  """
+  name_expr: String_Expr
+  """
+  ✨ Generated from Field `Container`.`type` of type `String`
+  """
+  type: String
+  """
+  ✨ `_expr` server value variant of `type` (✨ Generated from Field `Container`.`type` of type `String`)
+  """
+  type_expr: String_Expr
+}
+"""
+✨ Generated filter input type for table 'Container'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input Container_Filter {
+  """
+  Apply multiple filter conditions using `AND` logic.
+  """
+  _and: [Container_Filter!]
+  """
+  Negate the result of the provided filter condition.
+  """
+  _not: Container_Filter
+  """
+  Apply multiple filter conditions using `OR` logic.
+  """
+  _or: [Container_Filter!]
+  """
+  ✨ Generated from Field `Container`.`id` of type `UUID!`
+  """
+  id: UUID_Filter
+  """
+  ✨ Generated from Field `Container`.`userId` of type `UUID`
+  """
+  userId: UUID_Filter
+  """
+  ✨ Generated from Field `Container`.`user` of type `User`
+  """
+  user: User_Filter
+  """
+  ✨ Generated from Field `Container`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp_Filter
+  """
+  ✨ Generated from Field `Container`.`description` of type `String`
+  """
+  description: String_Filter
+  """
+  ✨ Generated from Field `Container`.`internalHeight` of type `Float!`
+  """
+  internalHeight: Float_Filter
+  """
+  ✨ Generated from Field `Container`.`internalLength` of type `Float!`
+  """
+  internalLength: Float_Filter
+  """
+  ✨ Generated from Field `Container`.`internalWidth` of type `Float!`
+  """
+  internalWidth: Float_Filter
+  """
+  ✨ Generated from Field `Container`.`maxWeightCapacity` of type `Float!`
+  """
+  maxWeightCapacity: Float_Filter
+  """
+  ✨ Generated from Field `Container`.`name` of type `String!`
+  """
+  name: String_Filter
+  """
+  ✨ Generated from Field `Container`.`type` of type `String`
+  """
+  type: String_Filter
+  """
+  ✨ Generated from Field `Container`.`loadingPlans_on_container` of type `[LoadingPlan!]!`
+  """
+  loadingPlans_on_container: LoadingPlan_ListFilter
+}
+"""
+✨ Generated first-row input type for table 'Container'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+"""
+input Container_FirstRow {
+  """
+  Order the result by the specified fields.
+  """
+  orderBy: [Container_Order!]
+  """
+  Filters rows based on the specified conditions.
+  """
+  where: Container_Filter
+}
+"""
+✨ Generated having input type for table 'Container'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input Container_Having {
+  """
+  Apply multiple Having conditions using `AND` logic.
+  """
+  _and: [Container_Having!]
+  """
+  Whether to apply DISTINCT to the aggregate function.
+  """
+  _distinct: Boolean
+  """
+  Negate the result of the provided Having condition.
+  """
+  _not: Container_Having
+  """
+  Apply multiple Having conditions using `OR` logic.
+  """
+  _or: [Container_Having!]
+  """
+  ✨ Generated from Field `Container`.`_count` of type `Int!`
+  """
+  _count: Int_Filter
+  """
+  ✨ Generated from Field `Container`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: Int_Filter
+  """
+  ✨ Generated from Field `Container`.`description_count` of type `Int!`
+  """
+  description_count: Int_Filter
+  """
+  ✨ Generated from Field `Container`.`id_count` of type `Int!`
+  """
+  id_count: Int_Filter
+  """
+  ✨ Generated from Field `Container`.`internalHeight_count` of type `Int!`
+  """
+  internalHeight_count: Int_Filter
+  """
+  ✨ Generated from Field `Container`.`internalLength_count` of type `Int!`
+  """
+  internalLength_count: Int_Filter
+  """
+  ✨ Generated from Field `Container`.`internalWidth_count` of type `Int!`
+  """
+  internalWidth_count: Int_Filter
+  """
+  ✨ Generated from Field `Container`.`maxWeightCapacity_count` of type `Int!`
+  """
+  maxWeightCapacity_count: Int_Filter
+  """
+  ✨ Generated from Field `Container`.`name_count` of type `Int!`
+  """
+  name_count: Int_Filter
+  """
+  ✨ Generated from Field `Container`.`type_count` of type `Int!`
+  """
+  type_count: Int_Filter
+  """
+  ✨ Generated from Field `Container`.`userId_count` of type `Int!`
+  """
+  userId_count: Int_Filter
+  """
+  ✨ Generated from Field `Container`.`internalHeight_sum` of type `Float`
+  """
+  internalHeight_sum: Float_Filter
+  """
+  ✨ Generated from Field `Container`.`internalLength_sum` of type `Float`
+  """
+  internalLength_sum: Float_Filter
+  """
+  ✨ Generated from Field `Container`.`internalWidth_sum` of type `Float`
+  """
+  internalWidth_sum: Float_Filter
+  """
+  ✨ Generated from Field `Container`.`maxWeightCapacity_sum` of type `Float`
+  """
+  maxWeightCapacity_sum: Float_Filter
+  """
+  ✨ Generated from Field `Container`.`internalHeight_avg` of type `Float`
+  """
+  internalHeight_avg: Float_Filter
+  """
+  ✨ Generated from Field `Container`.`internalLength_avg` of type `Float`
+  """
+  internalLength_avg: Float_Filter
+  """
+  ✨ Generated from Field `Container`.`internalWidth_avg` of type `Float`
+  """
+  internalWidth_avg: Float_Filter
+  """
+  ✨ Generated from Field `Container`.`maxWeightCapacity_avg` of type `Float`
+  """
+  maxWeightCapacity_avg: Float_Filter
+  """
+  ✨ Generated from Field `Container`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `Container`.`internalHeight_min` of type `Float`
+  """
+  internalHeight_min: Float_Filter
+  """
+  ✨ Generated from Field `Container`.`internalLength_min` of type `Float`
+  """
+  internalLength_min: Float_Filter
+  """
+  ✨ Generated from Field `Container`.`internalWidth_min` of type `Float`
+  """
+  internalWidth_min: Float_Filter
+  """
+  ✨ Generated from Field `Container`.`maxWeightCapacity_min` of type `Float`
+  """
+  maxWeightCapacity_min: Float_Filter
+  """
+  ✨ Generated from Field `Container`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: Timestamp_Filter
+  """
+  ✨ Generated from Field `Container`.`internalHeight_max` of type `Float`
+  """
+  internalHeight_max: Float_Filter
+  """
+  ✨ Generated from Field `Container`.`internalLength_max` of type `Float`
+  """
+  internalLength_max: Float_Filter
+  """
+  ✨ Generated from Field `Container`.`internalWidth_max` of type `Float`
+  """
+  internalWidth_max: Float_Filter
+  """
+  ✨ Generated from Field `Container`.`maxWeightCapacity_max` of type `Float`
+  """
+  maxWeightCapacity_max: Float_Filter
+}
+"""
+✨ Generated key input type for table 'Container'. It represents the primary key fields used to uniquely identify a row in the table.
+"""
+input Container_Key {
+  """
+  ✨ Generated from Field `Container`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Container`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+}
+"""
+✨ Generated list filter input type for table 'Container'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+"""
+input Container_ListFilter {
+  """
+  The desired number of objects that match the condition (defaults to at least one).
+  """
+  count: Int_Filter = {gt:0}
+  """
+  Condition of the related objects to filter for.
+  """
+  exist: Container_Filter
+}
+"""
+✨ Generated order input type for table 'Container'. This input defines the sorting order of rows in query results based on one or more fields.
+"""
+input Container_Order {
+  """
+  ✨ Generated from Field `Container`.`id` of type `UUID!`
+  """
+  id: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`userId` of type `UUID`
+  """
+  userId: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`user` of type `User`
+  """
+  user: User_Order
+  """
+  ✨ Generated from Field `Container`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`description` of type `String`
+  """
+  description: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`internalHeight` of type `Float!`
+  """
+  internalHeight: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`internalLength` of type `Float!`
+  """
+  internalLength: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`internalWidth` of type `Float!`
+  """
+  internalWidth: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`maxWeightCapacity` of type `Float!`
+  """
+  maxWeightCapacity: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`name` of type `String!`
+  """
+  name: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`type` of type `String`
+  """
+  type: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`_count` of type `Int!`
+  """
+  _count: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`description_count` of type `Int!`
+  """
+  description_count: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`id_count` of type `Int!`
+  """
+  id_count: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`internalHeight_count` of type `Int!`
+  """
+  internalHeight_count: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`internalLength_count` of type `Int!`
+  """
+  internalLength_count: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`internalWidth_count` of type `Int!`
+  """
+  internalWidth_count: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`maxWeightCapacity_count` of type `Int!`
+  """
+  maxWeightCapacity_count: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`name_count` of type `Int!`
+  """
+  name_count: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`type_count` of type `Int!`
+  """
+  type_count: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`userId_count` of type `Int!`
+  """
+  userId_count: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`internalHeight_sum` of type `Float`
+  """
+  internalHeight_sum: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`internalLength_sum` of type `Float`
+  """
+  internalLength_sum: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`internalWidth_sum` of type `Float`
+  """
+  internalWidth_sum: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`maxWeightCapacity_sum` of type `Float`
+  """
+  maxWeightCapacity_sum: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`internalHeight_avg` of type `Float`
+  """
+  internalHeight_avg: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`internalLength_avg` of type `Float`
+  """
+  internalLength_avg: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`internalWidth_avg` of type `Float`
+  """
+  internalWidth_avg: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`maxWeightCapacity_avg` of type `Float`
+  """
+  maxWeightCapacity_avg: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`internalHeight_min` of type `Float`
+  """
+  internalHeight_min: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`internalLength_min` of type `Float`
+  """
+  internalLength_min: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`internalWidth_min` of type `Float`
+  """
+  internalWidth_min: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`maxWeightCapacity_min` of type `Float`
+  """
+  maxWeightCapacity_min: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`internalHeight_max` of type `Float`
+  """
+  internalHeight_max: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`internalLength_max` of type `Float`
+  """
+  internalLength_max: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`internalWidth_max` of type `Float`
+  """
+  internalWidth_max: OrderDirection
+  """
+  ✨ Generated from Field `Container`.`maxWeightCapacity_max` of type `Float`
+  """
+  maxWeightCapacity_max: OrderDirection
+}
+"""
+✨ Generated data input type for table 'Item'. It includes all necessary fields for creating or upserting rows into table.
+"""
+input Item_Data {
+  """
+  ✨ Generated from Field `Item`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Item`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+  """
+  ✨ Generated from Field `Item`.`userId` of type `UUID`
+  """
+  userId: UUID
+  """
+  ✨ `_expr` server value variant of `userId` (✨ Generated from Field `Item`.`userId` of type `UUID`)
+  """
+  userId_expr: UUID_Expr
+  """
+  ✨ Generated from Field `Item`.`user` of type `User`
+  """
+  user: User_Key
+  """
+  ✨ Generated from Field `Item`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `Item`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_expr: Timestamp_Expr
+  """
+  ✨ `_time` server value variant of `createdAt` (✨ Generated from Field `Item`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_time: Timestamp_Relative
+  """
+  ✨ `_update` server value variant of `createdAt` (✨ Generated from Field `Item`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_update: [Timestamp_Update!]
+  """
+  ✨ Generated from Field `Item`.`description` of type `String`
+  """
+  description: String
+  """
+  ✨ `_expr` server value variant of `description` (✨ Generated from Field `Item`.`description` of type `String`)
+  """
+  description_expr: String_Expr
+  """
+  ✨ Generated from Field `Item`.`height` of type `Float!`
+  """
+  height: Float
+  """
+  ✨ `_expr` server value variant of `height` (✨ Generated from Field `Item`.`height` of type `Float!`)
+  """
+  height_expr: Float_Expr
+  """
+  ✨ `_update` server value variant of `height` (✨ Generated from Field `Item`.`height` of type `Float!`)
+  """
+  height_update: [Float_Update!]
+  """
+  ✨ Generated from Field `Item`.`length` of type `Float!`
+  """
+  length: Float
+  """
+  ✨ `_expr` server value variant of `length` (✨ Generated from Field `Item`.`length` of type `Float!`)
+  """
+  length_expr: Float_Expr
+  """
+  ✨ `_update` server value variant of `length` (✨ Generated from Field `Item`.`length` of type `Float!`)
+  """
+  length_update: [Float_Update!]
+  """
+  ✨ Generated from Field `Item`.`name` of type `String!`
+  """
+  name: String
+  """
+  ✨ `_expr` server value variant of `name` (✨ Generated from Field `Item`.`name` of type `String!`)
+  """
+  name_expr: String_Expr
+  """
+  ✨ Generated from Field `Item`.`rotatable` of type `Boolean`
+  """
+  rotatable: Boolean
+  """
+  ✨ `_expr` server value variant of `rotatable` (✨ Generated from Field `Item`.`rotatable` of type `Boolean`)
+  """
+  rotatable_expr: Boolean_Expr
+  """
+  ✨ Generated from Field `Item`.`stackable` of type `Boolean`
+  """
+  stackable: Boolean
+  """
+  ✨ `_expr` server value variant of `stackable` (✨ Generated from Field `Item`.`stackable` of type `Boolean`)
+  """
+  stackable_expr: Boolean_Expr
+  """
+  ✨ Generated from Field `Item`.`weight` of type `Float!`
+  """
+  weight: Float
+  """
+  ✨ `_expr` server value variant of `weight` (✨ Generated from Field `Item`.`weight` of type `Float!`)
+  """
+  weight_expr: Float_Expr
+  """
+  ✨ `_update` server value variant of `weight` (✨ Generated from Field `Item`.`weight` of type `Float!`)
+  """
+  weight_update: [Float_Update!]
+  """
+  ✨ Generated from Field `Item`.`width` of type `Float!`
+  """
+  width: Float
+  """
+  ✨ `_expr` server value variant of `width` (✨ Generated from Field `Item`.`width` of type `Float!`)
+  """
+  width_expr: Float_Expr
+  """
+  ✨ `_update` server value variant of `width` (✨ Generated from Field `Item`.`width` of type `Float!`)
+  """
+  width_update: [Float_Update!]
+}
+"""
+✨ Generated filter input type for table 'Item'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input Item_Filter {
+  """
+  Apply multiple filter conditions using `AND` logic.
+  """
+  _and: [Item_Filter!]
+  """
+  Negate the result of the provided filter condition.
+  """
+  _not: Item_Filter
+  """
+  Apply multiple filter conditions using `OR` logic.
+  """
+  _or: [Item_Filter!]
+  """
+  ✨ Generated from Field `Item`.`id` of type `UUID!`
+  """
+  id: UUID_Filter
+  """
+  ✨ Generated from Field `Item`.`userId` of type `UUID`
+  """
+  userId: UUID_Filter
+  """
+  ✨ Generated from Field `Item`.`user` of type `User`
+  """
+  user: User_Filter
+  """
+  ✨ Generated from Field `Item`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp_Filter
+  """
+  ✨ Generated from Field `Item`.`description` of type `String`
+  """
+  description: String_Filter
+  """
+  ✨ Generated from Field `Item`.`height` of type `Float!`
+  """
+  height: Float_Filter
+  """
+  ✨ Generated from Field `Item`.`length` of type `Float!`
+  """
+  length: Float_Filter
+  """
+  ✨ Generated from Field `Item`.`name` of type `String!`
+  """
+  name: String_Filter
+  """
+  ✨ Generated from Field `Item`.`rotatable` of type `Boolean`
+  """
+  rotatable: Boolean_Filter
+  """
+  ✨ Generated from Field `Item`.`stackable` of type `Boolean`
+  """
+  stackable: Boolean_Filter
+  """
+  ✨ Generated from Field `Item`.`weight` of type `Float!`
+  """
+  weight: Float_Filter
+  """
+  ✨ Generated from Field `Item`.`width` of type `Float!`
+  """
+  width: Float_Filter
+  """
+  ✨ Generated from Field `Item`.`loadingPlanItems_on_item` of type `[LoadingPlanItem!]!`
+  """
+  loadingPlanItems_on_item: LoadingPlanItem_ListFilter
+}
+"""
+✨ Generated first-row input type for table 'Item'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+"""
+input Item_FirstRow {
+  """
+  Order the result by the specified fields.
+  """
+  orderBy: [Item_Order!]
+  """
+  Filters rows based on the specified conditions.
+  """
+  where: Item_Filter
+}
+"""
+✨ Generated having input type for table 'Item'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input Item_Having {
+  """
+  Apply multiple Having conditions using `AND` logic.
+  """
+  _and: [Item_Having!]
+  """
+  Whether to apply DISTINCT to the aggregate function.
+  """
+  _distinct: Boolean
+  """
+  Negate the result of the provided Having condition.
+  """
+  _not: Item_Having
+  """
+  Apply multiple Having conditions using `OR` logic.
+  """
+  _or: [Item_Having!]
+  """
+  ✨ Generated from Field `Item`.`_count` of type `Int!`
+  """
+  _count: Int_Filter
+  """
+  ✨ Generated from Field `Item`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: Int_Filter
+  """
+  ✨ Generated from Field `Item`.`description_count` of type `Int!`
+  """
+  description_count: Int_Filter
+  """
+  ✨ Generated from Field `Item`.`height_count` of type `Int!`
+  """
+  height_count: Int_Filter
+  """
+  ✨ Generated from Field `Item`.`id_count` of type `Int!`
+  """
+  id_count: Int_Filter
+  """
+  ✨ Generated from Field `Item`.`length_count` of type `Int!`
+  """
+  length_count: Int_Filter
+  """
+  ✨ Generated from Field `Item`.`name_count` of type `Int!`
+  """
+  name_count: Int_Filter
+  """
+  ✨ Generated from Field `Item`.`rotatable_count` of type `Int!`
+  """
+  rotatable_count: Int_Filter
+  """
+  ✨ Generated from Field `Item`.`stackable_count` of type `Int!`
+  """
+  stackable_count: Int_Filter
+  """
+  ✨ Generated from Field `Item`.`userId_count` of type `Int!`
+  """
+  userId_count: Int_Filter
+  """
+  ✨ Generated from Field `Item`.`weight_count` of type `Int!`
+  """
+  weight_count: Int_Filter
+  """
+  ✨ Generated from Field `Item`.`width_count` of type `Int!`
+  """
+  width_count: Int_Filter
+  """
+  ✨ Generated from Field `Item`.`height_sum` of type `Float`
+  """
+  height_sum: Float_Filter
+  """
+  ✨ Generated from Field `Item`.`length_sum` of type `Float`
+  """
+  length_sum: Float_Filter
+  """
+  ✨ Generated from Field `Item`.`weight_sum` of type `Float`
+  """
+  weight_sum: Float_Filter
+  """
+  ✨ Generated from Field `Item`.`width_sum` of type `Float`
+  """
+  width_sum: Float_Filter
+  """
+  ✨ Generated from Field `Item`.`height_avg` of type `Float`
+  """
+  height_avg: Float_Filter
+  """
+  ✨ Generated from Field `Item`.`length_avg` of type `Float`
+  """
+  length_avg: Float_Filter
+  """
+  ✨ Generated from Field `Item`.`weight_avg` of type `Float`
+  """
+  weight_avg: Float_Filter
+  """
+  ✨ Generated from Field `Item`.`width_avg` of type `Float`
+  """
+  width_avg: Float_Filter
+  """
+  ✨ Generated from Field `Item`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `Item`.`height_min` of type `Float`
+  """
+  height_min: Float_Filter
+  """
+  ✨ Generated from Field `Item`.`length_min` of type `Float`
+  """
+  length_min: Float_Filter
+  """
+  ✨ Generated from Field `Item`.`weight_min` of type `Float`
+  """
+  weight_min: Float_Filter
+  """
+  ✨ Generated from Field `Item`.`width_min` of type `Float`
+  """
+  width_min: Float_Filter
+  """
+  ✨ Generated from Field `Item`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: Timestamp_Filter
+  """
+  ✨ Generated from Field `Item`.`height_max` of type `Float`
+  """
+  height_max: Float_Filter
+  """
+  ✨ Generated from Field `Item`.`length_max` of type `Float`
+  """
+  length_max: Float_Filter
+  """
+  ✨ Generated from Field `Item`.`weight_max` of type `Float`
+  """
+  weight_max: Float_Filter
+  """
+  ✨ Generated from Field `Item`.`width_max` of type `Float`
+  """
+  width_max: Float_Filter
+}
+"""
+✨ Generated key input type for table 'Item'. It represents the primary key fields used to uniquely identify a row in the table.
+"""
+input Item_Key {
+  """
+  ✨ Generated from Field `Item`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Item`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+}
+"""
+✨ Generated list filter input type for table 'Item'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+"""
+input Item_ListFilter {
+  """
+  The desired number of objects that match the condition (defaults to at least one).
+  """
+  count: Int_Filter = {gt:0}
+  """
+  Condition of the related objects to filter for.
+  """
+  exist: Item_Filter
+}
+"""
+✨ Generated order input type for table 'Item'. This input defines the sorting order of rows in query results based on one or more fields.
+"""
+input Item_Order {
+  """
+  ✨ Generated from Field `Item`.`id` of type `UUID!`
+  """
+  id: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`userId` of type `UUID`
+  """
+  userId: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`user` of type `User`
+  """
+  user: User_Order
+  """
+  ✨ Generated from Field `Item`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`description` of type `String`
+  """
+  description: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`height` of type `Float!`
+  """
+  height: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`length` of type `Float!`
+  """
+  length: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`name` of type `String!`
+  """
+  name: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`rotatable` of type `Boolean`
+  """
+  rotatable: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`stackable` of type `Boolean`
+  """
+  stackable: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`weight` of type `Float!`
+  """
+  weight: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`width` of type `Float!`
+  """
+  width: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`_count` of type `Int!`
+  """
+  _count: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`description_count` of type `Int!`
+  """
+  description_count: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`height_count` of type `Int!`
+  """
+  height_count: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`id_count` of type `Int!`
+  """
+  id_count: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`length_count` of type `Int!`
+  """
+  length_count: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`name_count` of type `Int!`
+  """
+  name_count: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`rotatable_count` of type `Int!`
+  """
+  rotatable_count: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`stackable_count` of type `Int!`
+  """
+  stackable_count: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`userId_count` of type `Int!`
+  """
+  userId_count: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`weight_count` of type `Int!`
+  """
+  weight_count: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`width_count` of type `Int!`
+  """
+  width_count: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`height_sum` of type `Float`
+  """
+  height_sum: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`length_sum` of type `Float`
+  """
+  length_sum: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`weight_sum` of type `Float`
+  """
+  weight_sum: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`width_sum` of type `Float`
+  """
+  width_sum: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`height_avg` of type `Float`
+  """
+  height_avg: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`length_avg` of type `Float`
+  """
+  length_avg: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`weight_avg` of type `Float`
+  """
+  weight_avg: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`width_avg` of type `Float`
+  """
+  width_avg: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`height_min` of type `Float`
+  """
+  height_min: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`length_min` of type `Float`
+  """
+  length_min: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`weight_min` of type `Float`
+  """
+  weight_min: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`width_min` of type `Float`
+  """
+  width_min: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`height_max` of type `Float`
+  """
+  height_max: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`length_max` of type `Float`
+  """
+  length_max: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`weight_max` of type `Float`
+  """
+  weight_max: OrderDirection
+  """
+  ✨ Generated from Field `Item`.`width_max` of type `Float`
+  """
+  width_max: OrderDirection
+}
+"""
+✨ Generated data input type for table 'LoadingPlan'. It includes all necessary fields for creating or upserting rows into table.
+"""
+input LoadingPlan_Data {
+  """
+  ✨ Generated from Field `LoadingPlan`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `LoadingPlan`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+  """
+  ✨ Generated from Field `LoadingPlan`.`containerId` of type `UUID!`
+  """
+  containerId: UUID
+  """
+  ✨ `_expr` server value variant of `containerId` (✨ Generated from Field `LoadingPlan`.`containerId` of type `UUID!`)
+  """
+  containerId_expr: UUID_Expr
+  """
+  ✨ Generated from Field `LoadingPlan`.`userId` of type `UUID`
+  """
+  userId: UUID
+  """
+  ✨ `_expr` server value variant of `userId` (✨ Generated from Field `LoadingPlan`.`userId` of type `UUID`)
+  """
+  userId_expr: UUID_Expr
+  """
+  ✨ Generated from Field `LoadingPlan`.`container` of type `Container!`
+  """
+  container: Container_Key
+  """
+  ✨ Generated from Field `LoadingPlan`.`user` of type `User`
+  """
+  user: User_Key
+  """
+  ✨ Generated from Field `LoadingPlan`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `LoadingPlan`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_expr: Timestamp_Expr
+  """
+  ✨ `_time` server value variant of `createdAt` (✨ Generated from Field `LoadingPlan`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_time: Timestamp_Relative
+  """
+  ✨ `_update` server value variant of `createdAt` (✨ Generated from Field `LoadingPlan`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_update: [Timestamp_Update!]
+  """
+  ✨ Generated from Field `LoadingPlan`.`description` of type `String`
+  """
+  description: String
+  """
+  ✨ `_expr` server value variant of `description` (✨ Generated from Field `LoadingPlan`.`description` of type `String`)
+  """
+  description_expr: String_Expr
+  """
+  ✨ Generated from Field `LoadingPlan`.`name` of type `String!`
+  """
+  name: String
+  """
+  ✨ `_expr` server value variant of `name` (✨ Generated from Field `LoadingPlan`.`name` of type `String!`)
+  """
+  name_expr: String_Expr
+  """
+  ✨ Generated from Field `LoadingPlan`.`totalVolumeUsed` of type `Float`
+  """
+  totalVolumeUsed: Float
+  """
+  ✨ `_expr` server value variant of `totalVolumeUsed` (✨ Generated from Field `LoadingPlan`.`totalVolumeUsed` of type `Float`)
+  """
+  totalVolumeUsed_expr: Float_Expr
+  """
+  ✨ `_update` server value variant of `totalVolumeUsed` (✨ Generated from Field `LoadingPlan`.`totalVolumeUsed` of type `Float`)
+  """
+  totalVolumeUsed_update: [Float_Update!]
+  """
+  ✨ Generated from Field `LoadingPlan`.`totalWeightLoaded` of type `Float`
+  """
+  totalWeightLoaded: Float
+  """
+  ✨ `_expr` server value variant of `totalWeightLoaded` (✨ Generated from Field `LoadingPlan`.`totalWeightLoaded` of type `Float`)
+  """
+  totalWeightLoaded_expr: Float_Expr
+  """
+  ✨ `_update` server value variant of `totalWeightLoaded` (✨ Generated from Field `LoadingPlan`.`totalWeightLoaded` of type `Float`)
+  """
+  totalWeightLoaded_update: [Float_Update!]
+  """
+  ✨ Generated from Field `LoadingPlan`.`updatedAt` of type `Timestamp!`
+  """
+  updatedAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `updatedAt` (✨ Generated from Field `LoadingPlan`.`updatedAt` of type `Timestamp!`)
+  """
+  updatedAt_expr: Timestamp_Expr
+  """
+  ✨ `_time` server value variant of `updatedAt` (✨ Generated from Field `LoadingPlan`.`updatedAt` of type `Timestamp!`)
+  """
+  updatedAt_time: Timestamp_Relative
+  """
+  ✨ `_update` server value variant of `updatedAt` (✨ Generated from Field `LoadingPlan`.`updatedAt` of type `Timestamp!`)
+  """
+  updatedAt_update: [Timestamp_Update!]
+}
+"""
+✨ Generated filter input type for table 'LoadingPlan'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input LoadingPlan_Filter {
+  """
+  Apply multiple filter conditions using `AND` logic.
+  """
+  _and: [LoadingPlan_Filter!]
+  """
+  Negate the result of the provided filter condition.
+  """
+  _not: LoadingPlan_Filter
+  """
+  Apply multiple filter conditions using `OR` logic.
+  """
+  _or: [LoadingPlan_Filter!]
+  """
+  ✨ Generated from Field `LoadingPlan`.`id` of type `UUID!`
+  """
+  id: UUID_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`containerId` of type `UUID!`
+  """
+  containerId: UUID_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`userId` of type `UUID`
+  """
+  userId: UUID_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`container` of type `Container!`
+  """
+  container: Container_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`user` of type `User`
+  """
+  user: User_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`description` of type `String`
+  """
+  description: String_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`name` of type `String!`
+  """
+  name: String_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`totalVolumeUsed` of type `Float`
+  """
+  totalVolumeUsed: Float_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`totalWeightLoaded` of type `Float`
+  """
+  totalWeightLoaded: Float_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`updatedAt` of type `Timestamp!`
+  """
+  updatedAt: Timestamp_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`loadingPlanItems_on_loadingPlan` of type `[LoadingPlanItem!]!`
+  """
+  loadingPlanItems_on_loadingPlan: LoadingPlanItem_ListFilter
+}
+"""
+✨ Generated first-row input type for table 'LoadingPlan'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+"""
+input LoadingPlan_FirstRow {
+  """
+  Order the result by the specified fields.
+  """
+  orderBy: [LoadingPlan_Order!]
+  """
+  Filters rows based on the specified conditions.
+  """
+  where: LoadingPlan_Filter
+}
+"""
+✨ Generated having input type for table 'LoadingPlan'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input LoadingPlan_Having {
+  """
+  Apply multiple Having conditions using `AND` logic.
+  """
+  _and: [LoadingPlan_Having!]
+  """
+  Whether to apply DISTINCT to the aggregate function.
+  """
+  _distinct: Boolean
+  """
+  Negate the result of the provided Having condition.
+  """
+  _not: LoadingPlan_Having
+  """
+  Apply multiple Having conditions using `OR` logic.
+  """
+  _or: [LoadingPlan_Having!]
+  """
+  ✨ Generated from Field `LoadingPlan`.`_count` of type `Int!`
+  """
+  _count: Int_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`containerId_count` of type `Int!`
+  """
+  containerId_count: Int_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: Int_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`description_count` of type `Int!`
+  """
+  description_count: Int_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`id_count` of type `Int!`
+  """
+  id_count: Int_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`name_count` of type `Int!`
+  """
+  name_count: Int_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`totalVolumeUsed_count` of type `Int!`
+  """
+  totalVolumeUsed_count: Int_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`totalWeightLoaded_count` of type `Int!`
+  """
+  totalWeightLoaded_count: Int_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`updatedAt_count` of type `Int!`
+  """
+  updatedAt_count: Int_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`userId_count` of type `Int!`
+  """
+  userId_count: Int_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`totalVolumeUsed_sum` of type `Float`
+  """
+  totalVolumeUsed_sum: Float_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`totalWeightLoaded_sum` of type `Float`
+  """
+  totalWeightLoaded_sum: Float_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`totalVolumeUsed_avg` of type `Float`
+  """
+  totalVolumeUsed_avg: Float_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`totalWeightLoaded_avg` of type `Float`
+  """
+  totalWeightLoaded_avg: Float_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`totalVolumeUsed_min` of type `Float`
+  """
+  totalVolumeUsed_min: Float_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`totalWeightLoaded_min` of type `Float`
+  """
+  totalWeightLoaded_min: Float_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`updatedAt_min` of type `Timestamp`
+  """
+  updatedAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: Timestamp_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`totalVolumeUsed_max` of type `Float`
+  """
+  totalVolumeUsed_max: Float_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`totalWeightLoaded_max` of type `Float`
+  """
+  totalWeightLoaded_max: Float_Filter
+  """
+  ✨ Generated from Field `LoadingPlan`.`updatedAt_max` of type `Timestamp`
+  """
+  updatedAt_max: Timestamp_Filter
+}
+"""
+✨ Generated key input type for table 'LoadingPlan'. It represents the primary key fields used to uniquely identify a row in the table.
+"""
+input LoadingPlan_Key {
+  """
+  ✨ Generated from Field `LoadingPlan`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `LoadingPlan`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+}
+"""
+✨ Generated list filter input type for table 'LoadingPlan'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+"""
+input LoadingPlan_ListFilter {
+  """
+  The desired number of objects that match the condition (defaults to at least one).
+  """
+  count: Int_Filter = {gt:0}
+  """
+  Condition of the related objects to filter for.
+  """
+  exist: LoadingPlan_Filter
+}
+"""
+✨ Generated order input type for table 'LoadingPlan'. This input defines the sorting order of rows in query results based on one or more fields.
+"""
+input LoadingPlan_Order {
+  """
+  ✨ Generated from Field `LoadingPlan`.`id` of type `UUID!`
+  """
+  id: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`containerId` of type `UUID!`
+  """
+  containerId: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`userId` of type `UUID`
+  """
+  userId: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`container` of type `Container!`
+  """
+  container: Container_Order
+  """
+  ✨ Generated from Field `LoadingPlan`.`user` of type `User`
+  """
+  user: User_Order
+  """
+  ✨ Generated from Field `LoadingPlan`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`description` of type `String`
+  """
+  description: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`name` of type `String!`
+  """
+  name: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`totalVolumeUsed` of type `Float`
+  """
+  totalVolumeUsed: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`totalWeightLoaded` of type `Float`
+  """
+  totalWeightLoaded: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`updatedAt` of type `Timestamp!`
+  """
+  updatedAt: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`_count` of type `Int!`
+  """
+  _count: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`containerId_count` of type `Int!`
+  """
+  containerId_count: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`description_count` of type `Int!`
+  """
+  description_count: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`id_count` of type `Int!`
+  """
+  id_count: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`name_count` of type `Int!`
+  """
+  name_count: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`totalVolumeUsed_count` of type `Int!`
+  """
+  totalVolumeUsed_count: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`totalWeightLoaded_count` of type `Int!`
+  """
+  totalWeightLoaded_count: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`updatedAt_count` of type `Int!`
+  """
+  updatedAt_count: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`userId_count` of type `Int!`
+  """
+  userId_count: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`totalVolumeUsed_sum` of type `Float`
+  """
+  totalVolumeUsed_sum: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`totalWeightLoaded_sum` of type `Float`
+  """
+  totalWeightLoaded_sum: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`totalVolumeUsed_avg` of type `Float`
+  """
+  totalVolumeUsed_avg: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`totalWeightLoaded_avg` of type `Float`
+  """
+  totalWeightLoaded_avg: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`totalVolumeUsed_min` of type `Float`
+  """
+  totalVolumeUsed_min: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`totalWeightLoaded_min` of type `Float`
+  """
+  totalWeightLoaded_min: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`updatedAt_min` of type `Timestamp`
+  """
+  updatedAt_min: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`totalVolumeUsed_max` of type `Float`
+  """
+  totalVolumeUsed_max: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`totalWeightLoaded_max` of type `Float`
+  """
+  totalWeightLoaded_max: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlan`.`updatedAt_max` of type `Timestamp`
+  """
+  updatedAt_max: OrderDirection
+}
+"""
+✨ Generated data input type for table 'LoadingPlanItem'. It includes all necessary fields for creating or upserting rows into table.
+"""
+input LoadingPlanItem_Data {
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `LoadingPlanItem`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`itemId` of type `UUID!`
+  """
+  itemId: UUID
+  """
+  ✨ `_expr` server value variant of `itemId` (✨ Generated from Field `LoadingPlanItem`.`itemId` of type `UUID!`)
+  """
+  itemId_expr: UUID_Expr
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`loadingPlanId` of type `UUID!`
+  """
+  loadingPlanId: UUID
+  """
+  ✨ `_expr` server value variant of `loadingPlanId` (✨ Generated from Field `LoadingPlanItem`.`loadingPlanId` of type `UUID!`)
+  """
+  loadingPlanId_expr: UUID_Expr
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`item` of type `Item!`
+  """
+  item: Item_Key
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`loadingPlan` of type `LoadingPlan!`
+  """
+  loadingPlan: LoadingPlan_Key
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`notes` of type `String`
+  """
+  notes: String
+  """
+  ✨ `_expr` server value variant of `notes` (✨ Generated from Field `LoadingPlanItem`.`notes` of type `String`)
+  """
+  notes_expr: String_Expr
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`orientation` of type `String!`
+  """
+  orientation: String
+  """
+  ✨ `_expr` server value variant of `orientation` (✨ Generated from Field `LoadingPlanItem`.`orientation` of type `String!`)
+  """
+  orientation_expr: String_Expr
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionX` of type `Float!`
+  """
+  positionX: Float
+  """
+  ✨ `_expr` server value variant of `positionX` (✨ Generated from Field `LoadingPlanItem`.`positionX` of type `Float!`)
+  """
+  positionX_expr: Float_Expr
+  """
+  ✨ `_update` server value variant of `positionX` (✨ Generated from Field `LoadingPlanItem`.`positionX` of type `Float!`)
+  """
+  positionX_update: [Float_Update!]
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionY` of type `Float!`
+  """
+  positionY: Float
+  """
+  ✨ `_expr` server value variant of `positionY` (✨ Generated from Field `LoadingPlanItem`.`positionY` of type `Float!`)
+  """
+  positionY_expr: Float_Expr
+  """
+  ✨ `_update` server value variant of `positionY` (✨ Generated from Field `LoadingPlanItem`.`positionY` of type `Float!`)
+  """
+  positionY_update: [Float_Update!]
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionZ` of type `Float!`
+  """
+  positionZ: Float
+  """
+  ✨ `_expr` server value variant of `positionZ` (✨ Generated from Field `LoadingPlanItem`.`positionZ` of type `Float!`)
+  """
+  positionZ_expr: Float_Expr
+  """
+  ✨ `_update` server value variant of `positionZ` (✨ Generated from Field `LoadingPlanItem`.`positionZ` of type `Float!`)
+  """
+  positionZ_update: [Float_Update!]
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`quantity` of type `Int!`
+  """
+  quantity: Int
+  """
+  ✨ `_expr` server value variant of `quantity` (✨ Generated from Field `LoadingPlanItem`.`quantity` of type `Int!`)
+  """
+  quantity_expr: Int_Expr
+  """
+  ✨ `_update` server value variant of `quantity` (✨ Generated from Field `LoadingPlanItem`.`quantity` of type `Int!`)
+  """
+  quantity_update: [Int_Update!]
+}
+"""
+✨ Generated filter input type for table 'LoadingPlanItem'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input LoadingPlanItem_Filter {
+  """
+  Apply multiple filter conditions using `AND` logic.
+  """
+  _and: [LoadingPlanItem_Filter!]
+  """
+  Negate the result of the provided filter condition.
+  """
+  _not: LoadingPlanItem_Filter
+  """
+  Apply multiple filter conditions using `OR` logic.
+  """
+  _or: [LoadingPlanItem_Filter!]
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`id` of type `UUID!`
+  """
+  id: UUID_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`itemId` of type `UUID!`
+  """
+  itemId: UUID_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`loadingPlanId` of type `UUID!`
+  """
+  loadingPlanId: UUID_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`item` of type `Item!`
+  """
+  item: Item_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`loadingPlan` of type `LoadingPlan!`
+  """
+  loadingPlan: LoadingPlan_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`notes` of type `String`
+  """
+  notes: String_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`orientation` of type `String!`
+  """
+  orientation: String_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionX` of type `Float!`
+  """
+  positionX: Float_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionY` of type `Float!`
+  """
+  positionY: Float_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionZ` of type `Float!`
+  """
+  positionZ: Float_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`quantity` of type `Int!`
+  """
+  quantity: Int_Filter
+}
+"""
+✨ Generated first-row input type for table 'LoadingPlanItem'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+"""
+input LoadingPlanItem_FirstRow {
+  """
+  Order the result by the specified fields.
+  """
+  orderBy: [LoadingPlanItem_Order!]
+  """
+  Filters rows based on the specified conditions.
+  """
+  where: LoadingPlanItem_Filter
+}
+"""
+✨ Generated having input type for table 'LoadingPlanItem'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input LoadingPlanItem_Having {
+  """
+  Apply multiple Having conditions using `AND` logic.
+  """
+  _and: [LoadingPlanItem_Having!]
+  """
+  Whether to apply DISTINCT to the aggregate function.
+  """
+  _distinct: Boolean
+  """
+  Negate the result of the provided Having condition.
+  """
+  _not: LoadingPlanItem_Having
+  """
+  Apply multiple Having conditions using `OR` logic.
+  """
+  _or: [LoadingPlanItem_Having!]
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`_count` of type `Int!`
+  """
+  _count: Int_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`id_count` of type `Int!`
+  """
+  id_count: Int_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`itemId_count` of type `Int!`
+  """
+  itemId_count: Int_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`loadingPlanId_count` of type `Int!`
+  """
+  loadingPlanId_count: Int_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`notes_count` of type `Int!`
+  """
+  notes_count: Int_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`orientation_count` of type `Int!`
+  """
+  orientation_count: Int_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionX_count` of type `Int!`
+  """
+  positionX_count: Int_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionY_count` of type `Int!`
+  """
+  positionY_count: Int_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionZ_count` of type `Int!`
+  """
+  positionZ_count: Int_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`quantity_count` of type `Int!`
+  """
+  quantity_count: Int_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionX_sum` of type `Float`
+  """
+  positionX_sum: Float_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionY_sum` of type `Float`
+  """
+  positionY_sum: Float_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionZ_sum` of type `Float`
+  """
+  positionZ_sum: Float_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`quantity_sum` of type `Int`
+  """
+  quantity_sum: Int_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionX_avg` of type `Float`
+  """
+  positionX_avg: Float_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionY_avg` of type `Float`
+  """
+  positionY_avg: Float_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionZ_avg` of type `Float`
+  """
+  positionZ_avg: Float_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`quantity_avg` of type `Float`
+  """
+  quantity_avg: Float_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionX_min` of type `Float`
+  """
+  positionX_min: Float_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionY_min` of type `Float`
+  """
+  positionY_min: Float_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionZ_min` of type `Float`
+  """
+  positionZ_min: Float_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`quantity_min` of type `Int`
+  """
+  quantity_min: Int_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionX_max` of type `Float`
+  """
+  positionX_max: Float_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionY_max` of type `Float`
+  """
+  positionY_max: Float_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionZ_max` of type `Float`
+  """
+  positionZ_max: Float_Filter
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`quantity_max` of type `Int`
+  """
+  quantity_max: Int_Filter
+}
+"""
+✨ Generated key input type for table 'LoadingPlanItem'. It represents the primary key fields used to uniquely identify a row in the table.
+"""
+input LoadingPlanItem_Key {
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `LoadingPlanItem`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+}
+"""
+✨ Generated list filter input type for table 'LoadingPlanItem'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+"""
+input LoadingPlanItem_ListFilter {
+  """
+  The desired number of objects that match the condition (defaults to at least one).
+  """
+  count: Int_Filter = {gt:0}
+  """
+  Condition of the related objects to filter for.
+  """
+  exist: LoadingPlanItem_Filter
+}
+"""
+✨ Generated order input type for table 'LoadingPlanItem'. This input defines the sorting order of rows in query results based on one or more fields.
+"""
+input LoadingPlanItem_Order {
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`id` of type `UUID!`
+  """
+  id: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`itemId` of type `UUID!`
+  """
+  itemId: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`loadingPlanId` of type `UUID!`
+  """
+  loadingPlanId: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`item` of type `Item!`
+  """
+  item: Item_Order
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`loadingPlan` of type `LoadingPlan!`
+  """
+  loadingPlan: LoadingPlan_Order
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`notes` of type `String`
+  """
+  notes: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`orientation` of type `String!`
+  """
+  orientation: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionX` of type `Float!`
+  """
+  positionX: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionY` of type `Float!`
+  """
+  positionY: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionZ` of type `Float!`
+  """
+  positionZ: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`quantity` of type `Int!`
+  """
+  quantity: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`_count` of type `Int!`
+  """
+  _count: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`id_count` of type `Int!`
+  """
+  id_count: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`itemId_count` of type `Int!`
+  """
+  itemId_count: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`loadingPlanId_count` of type `Int!`
+  """
+  loadingPlanId_count: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`notes_count` of type `Int!`
+  """
+  notes_count: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`orientation_count` of type `Int!`
+  """
+  orientation_count: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionX_count` of type `Int!`
+  """
+  positionX_count: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionY_count` of type `Int!`
+  """
+  positionY_count: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionZ_count` of type `Int!`
+  """
+  positionZ_count: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`quantity_count` of type `Int!`
+  """
+  quantity_count: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionX_sum` of type `Float`
+  """
+  positionX_sum: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionY_sum` of type `Float`
+  """
+  positionY_sum: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionZ_sum` of type `Float`
+  """
+  positionZ_sum: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`quantity_sum` of type `Int`
+  """
+  quantity_sum: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionX_avg` of type `Float`
+  """
+  positionX_avg: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionY_avg` of type `Float`
+  """
+  positionY_avg: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionZ_avg` of type `Float`
+  """
+  positionZ_avg: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`quantity_avg` of type `Float`
+  """
+  quantity_avg: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionX_min` of type `Float`
+  """
+  positionX_min: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionY_min` of type `Float`
+  """
+  positionY_min: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionZ_min` of type `Float`
+  """
+  positionZ_min: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`quantity_min` of type `Int`
+  """
+  quantity_min: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionX_max` of type `Float`
+  """
+  positionX_max: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionY_max` of type `Float`
+  """
+  positionY_max: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`positionZ_max` of type `Float`
+  """
+  positionZ_max: OrderDirection
+  """
+  ✨ Generated from Field `LoadingPlanItem`.`quantity_max` of type `Int`
+  """
+  quantity_max: OrderDirection
+}
+"""
+✨ Generated data input type for table 'User'. It includes all necessary fields for creating or upserting rows into table.
+"""
+input User_Data {
+  """
+  ✨ Generated from Field `User`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `User`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+  """
+  ✨ Generated from Field `User`.`companyName` of type `String`
+  """
+  companyName: String
+  """
+  ✨ `_expr` server value variant of `companyName` (✨ Generated from Field `User`.`companyName` of type `String`)
+  """
+  companyName_expr: String_Expr
+  """
+  ✨ Generated from Field `User`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `User`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_expr: Timestamp_Expr
+  """
+  ✨ `_time` server value variant of `createdAt` (✨ Generated from Field `User`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_time: Timestamp_Relative
+  """
+  ✨ `_update` server value variant of `createdAt` (✨ Generated from Field `User`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_update: [Timestamp_Update!]
+  """
+  ✨ Generated from Field `User`.`displayName` of type `String!`
+  """
+  displayName: String
+  """
+  ✨ `_expr` server value variant of `displayName` (✨ Generated from Field `User`.`displayName` of type `String!`)
+  """
+  displayName_expr: String_Expr
+  """
+  ✨ Generated from Field `User`.`email` of type `String!`
+  """
+  email: String
+  """
+  ✨ `_expr` server value variant of `email` (✨ Generated from Field `User`.`email` of type `String!`)
+  """
+  email_expr: String_Expr
+  """
+  ✨ Generated from Field `User`.`photoUrl` of type `String`
+  """
+  photoUrl: String
+  """
+  ✨ `_expr` server value variant of `photoUrl` (✨ Generated from Field `User`.`photoUrl` of type `String`)
+  """
+  photoUrl_expr: String_Expr
+}
+"""
+✨ Generated filter input type for table 'User'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input User_Filter {
+  """
+  Apply multiple filter conditions using `AND` logic.
+  """
+  _and: [User_Filter!]
+  """
+  Negate the result of the provided filter condition.
+  """
+  _not: User_Filter
+  """
+  Apply multiple filter conditions using `OR` logic.
+  """
+  _or: [User_Filter!]
+  """
+  ✨ Generated from Field `User`.`id` of type `UUID!`
+  """
+  id: UUID_Filter
+  """
+  ✨ Generated from Field `User`.`companyName` of type `String`
+  """
+  companyName: String_Filter
+  """
+  ✨ Generated from Field `User`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp_Filter
+  """
+  ✨ Generated from Field `User`.`displayName` of type `String!`
+  """
+  displayName: String_Filter
+  """
+  ✨ Generated from Field `User`.`email` of type `String!`
+  """
+  email: String_Filter
+  """
+  ✨ Generated from Field `User`.`photoUrl` of type `String`
+  """
+  photoUrl: String_Filter
+  """
+  ✨ Generated from Field `User`.`containers_on_user` of type `[Container!]!`
+  """
+  containers_on_user: Container_ListFilter
+  """
+  ✨ Generated from Field `User`.`items_on_user` of type `[Item!]!`
+  """
+  items_on_user: Item_ListFilter
+  """
+  ✨ Generated from Field `User`.`loadingPlans_on_user` of type `[LoadingPlan!]!`
+  """
+  loadingPlans_on_user: LoadingPlan_ListFilter
+}
+"""
+✨ Generated first-row input type for table 'User'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+"""
+input User_FirstRow {
+  """
+  Order the result by the specified fields.
+  """
+  orderBy: [User_Order!]
+  """
+  Filters rows based on the specified conditions.
+  """
+  where: User_Filter
+}
+"""
+✨ Generated having input type for table 'User'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input User_Having {
+  """
+  Apply multiple Having conditions using `AND` logic.
+  """
+  _and: [User_Having!]
+  """
+  Whether to apply DISTINCT to the aggregate function.
+  """
+  _distinct: Boolean
+  """
+  Negate the result of the provided Having condition.
+  """
+  _not: User_Having
+  """
+  Apply multiple Having conditions using `OR` logic.
+  """
+  _or: [User_Having!]
+  """
+  ✨ Generated from Field `User`.`_count` of type `Int!`
+  """
+  _count: Int_Filter
+  """
+  ✨ Generated from Field `User`.`companyName_count` of type `Int!`
+  """
+  companyName_count: Int_Filter
+  """
+  ✨ Generated from Field `User`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: Int_Filter
+  """
+  ✨ Generated from Field `User`.`displayName_count` of type `Int!`
+  """
+  displayName_count: Int_Filter
+  """
+  ✨ Generated from Field `User`.`email_count` of type `Int!`
+  """
+  email_count: Int_Filter
+  """
+  ✨ Generated from Field `User`.`id_count` of type `Int!`
+  """
+  id_count: Int_Filter
+  """
+  ✨ Generated from Field `User`.`photoUrl_count` of type `Int!`
+  """
+  photoUrl_count: Int_Filter
+  """
+  ✨ Generated from Field `User`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `User`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: Timestamp_Filter
+}
+"""
+✨ Generated key input type for table 'User'. It represents the primary key fields used to uniquely identify a row in the table.
+"""
+input User_Key {
+  """
+  ✨ Generated from Field `User`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `User`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+}
+"""
+✨ Generated list filter input type for table 'User'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+"""
+input User_ListFilter {
+  """
+  The desired number of objects that match the condition (defaults to at least one).
+  """
+  count: Int_Filter = {gt:0}
+  """
+  Condition of the related objects to filter for.
+  """
+  exist: User_Filter
+}
+"""
+✨ Generated order input type for table 'User'. This input defines the sorting order of rows in query results based on one or more fields.
+"""
+input User_Order {
+  """
+  ✨ Generated from Field `User`.`id` of type `UUID!`
+  """
+  id: OrderDirection
+  """
+  ✨ Generated from Field `User`.`companyName` of type `String`
+  """
+  companyName: OrderDirection
+  """
+  ✨ Generated from Field `User`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: OrderDirection
+  """
+  ✨ Generated from Field `User`.`displayName` of type `String!`
+  """
+  displayName: OrderDirection
+  """
+  ✨ Generated from Field `User`.`email` of type `String!`
+  """
+  email: OrderDirection
+  """
+  ✨ Generated from Field `User`.`photoUrl` of type `String`
+  """
+  photoUrl: OrderDirection
+  """
+  ✨ Generated from Field `User`.`_count` of type `Int!`
+  """
+  _count: OrderDirection
+  """
+  ✨ Generated from Field `User`.`companyName_count` of type `Int!`
+  """
+  companyName_count: OrderDirection
+  """
+  ✨ Generated from Field `User`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: OrderDirection
+  """
+  ✨ Generated from Field `User`.`displayName_count` of type `Int!`
+  """
+  displayName_count: OrderDirection
+  """
+  ✨ Generated from Field `User`.`email_count` of type `Int!`
+  """
+  email_count: OrderDirection
+  """
+  ✨ Generated from Field `User`.`id_count` of type `Int!`
+  """
+  id_count: OrderDirection
+  """
+  ✨ Generated from Field `User`.`photoUrl_count` of type `Int!`
+  """
+  photoUrl_count: OrderDirection
+  """
+  ✨ Generated from Field `User`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: OrderDirection
+  """
+  ✨ Generated from Field `User`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: OrderDirection
+}

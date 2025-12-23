@@ -1,0 +1,562 @@
+extend type Mutation {
+  """
+  ✨ Insert a single `Container` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  container_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Container_Data!
+  ): Container_KeyOutput! @fdc_generated(from: "Container", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Item` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  item_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Item_Data!
+  ): Item_KeyOutput! @fdc_generated(from: "Item", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `LoadingPlan` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  loadingPlan_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: LoadingPlan_Data!
+  ): LoadingPlan_KeyOutput! @fdc_generated(from: "LoadingPlan", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `LoadingPlanItem` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  loadingPlanItem_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: LoadingPlanItem_Data!
+  ): LoadingPlanItem_KeyOutput! @fdc_generated(from: "LoadingPlanItem", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `User` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  user_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: User_Data!
+  ): User_KeyOutput! @fdc_generated(from: "User", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert `Container` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  container_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Container_Data!]!
+  ): [Container_KeyOutput!]! @fdc_generated(from: "Container", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Item` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  item_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Item_Data!]!
+  ): [Item_KeyOutput!]! @fdc_generated(from: "Item", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `LoadingPlan` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  loadingPlan_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [LoadingPlan_Data!]!
+  ): [LoadingPlan_KeyOutput!]! @fdc_generated(from: "LoadingPlan", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `LoadingPlanItem` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  loadingPlanItem_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [LoadingPlanItem_Data!]!
+  ): [LoadingPlanItem_KeyOutput!]! @fdc_generated(from: "LoadingPlanItem", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `User` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  user_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [User_Data!]!
+  ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert or update a single `Container` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Container`.
+  """
+  container_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Container_Data!
+  ): Container_KeyOutput! @fdc_generated(from: "Container", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Item` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Item`.
+  """
+  item_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Item_Data!
+  ): Item_KeyOutput! @fdc_generated(from: "Item", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `LoadingPlan` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `LoadingPlan`.
+  """
+  loadingPlan_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: LoadingPlan_Data!
+  ): LoadingPlan_KeyOutput! @fdc_generated(from: "LoadingPlan", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `LoadingPlanItem` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `LoadingPlanItem`.
+  """
+  loadingPlanItem_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: LoadingPlanItem_Data!
+  ): LoadingPlanItem_KeyOutput! @fdc_generated(from: "LoadingPlanItem", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `User` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `User`.
+  """
+  user_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: User_Data!
+  ): User_KeyOutput! @fdc_generated(from: "User", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update `Container` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Container`.
+  """
+  container_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Container_Data!]!
+  ): [Container_KeyOutput!]! @fdc_generated(from: "Container", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Item` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Item`.
+  """
+  item_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Item_Data!]!
+  ): [Item_KeyOutput!]! @fdc_generated(from: "Item", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `LoadingPlan` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `LoadingPlan`.
+  """
+  loadingPlan_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [LoadingPlan_Data!]!
+  ): [LoadingPlan_KeyOutput!]! @fdc_generated(from: "LoadingPlan", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `LoadingPlanItem` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `LoadingPlanItem`.
+  """
+  loadingPlanItem_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [LoadingPlanItem_Data!]!
+  ): [LoadingPlanItem_KeyOutput!]! @fdc_generated(from: "LoadingPlanItem", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `User` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `User`.
+  """
+  user_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [User_Data!]!
+  ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Update a single `Container` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Container` or `null` if not found.
+  """
+  container_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Container_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Container_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Container_Data!
+  ): Container_KeyOutput @fdc_generated(from: "Container", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Item` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Item` or `null` if not found.
+  """
+  item_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Item_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Item_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Item_Data!
+  ): Item_KeyOutput @fdc_generated(from: "Item", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `LoadingPlan` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `LoadingPlan` or `null` if not found.
+  """
+  loadingPlan_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: LoadingPlan_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: LoadingPlan_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: LoadingPlan_Data!
+  ): LoadingPlan_KeyOutput @fdc_generated(from: "LoadingPlan", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `LoadingPlanItem` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `LoadingPlanItem` or `null` if not found.
+  """
+  loadingPlanItem_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: LoadingPlanItem_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: LoadingPlanItem_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: LoadingPlanItem_Data!
+  ): LoadingPlanItem_KeyOutput @fdc_generated(from: "LoadingPlanItem", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `User` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `User` or `null` if not found.
+  """
+  user_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: User_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: User_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: User_Data!
+  ): User_KeyOutput @fdc_generated(from: "User", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update `Container` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  container_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Container_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Container_Data!
+  ): Int! @fdc_generated(from: "Container", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Item` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  item_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Item_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Item_Data!
+  ): Int! @fdc_generated(from: "Item", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `LoadingPlan` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  loadingPlan_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: LoadingPlan_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: LoadingPlan_Data!
+  ): Int! @fdc_generated(from: "LoadingPlan", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `LoadingPlanItem` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  loadingPlanItem_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: LoadingPlanItem_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: LoadingPlanItem_Data!
+  ): Int! @fdc_generated(from: "LoadingPlanItem", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `User` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  user_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: User_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: User_Data!
+  ): Int! @fdc_generated(from: "User", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Delete a single `Container` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  container_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Container_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Container_FirstRow
+  ): Container_KeyOutput @fdc_generated(from: "Container", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Item` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  item_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Item_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Item_FirstRow
+  ): Item_KeyOutput @fdc_generated(from: "Item", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `LoadingPlan` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  loadingPlan_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: LoadingPlan_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: LoadingPlan_FirstRow
+  ): LoadingPlan_KeyOutput @fdc_generated(from: "LoadingPlan", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `LoadingPlanItem` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  loadingPlanItem_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: LoadingPlanItem_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: LoadingPlanItem_FirstRow
+  ): LoadingPlanItem_KeyOutput @fdc_generated(from: "LoadingPlanItem", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `User` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  user_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: User_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: User_FirstRow
+  ): User_KeyOutput @fdc_generated(from: "User", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete `Container` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  container_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Container_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Container", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Item` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  item_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Item_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Item", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `LoadingPlan` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  loadingPlan_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: LoadingPlan_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "LoadingPlan", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `LoadingPlanItem` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  loadingPlanItem_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: LoadingPlanItem_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "LoadingPlanItem", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `User` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  user_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: User_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "User", purpose: DELETE_MULTIPLE)
+}

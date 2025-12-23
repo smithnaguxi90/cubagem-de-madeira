@@ -1,0 +1,54 @@
+extend type Container {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Container", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Container`.`user`. It must match the value of `User`.`id`. See `@ref` for how to customize it.
+  """
+  userId: UUID @fdc_generated(from: "Container.user", purpose: IMPLICIT_REF_FIELD)
+}
+extend type Item {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Item", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Item`.`user`. It must match the value of `User`.`id`. See `@ref` for how to customize it.
+  """
+  userId: UUID @fdc_generated(from: "Item.user", purpose: IMPLICIT_REF_FIELD)
+}
+extend type LoadingPlan {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "LoadingPlan", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `LoadingPlan`.`container`. It must match the value of `Container`.`id`. See `@ref` for how to customize it.
+  """
+  containerId: UUID! @fdc_generated(from: "LoadingPlan.container", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `LoadingPlan`.`user`. It must match the value of `User`.`id`. See `@ref` for how to customize it.
+  """
+  userId: UUID @fdc_generated(from: "LoadingPlan.user", purpose: IMPLICIT_REF_FIELD)
+}
+extend type LoadingPlanItem {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "LoadingPlanItem", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `LoadingPlanItem`.`item`. It must match the value of `Item`.`id`. See `@ref` for how to customize it.
+  """
+  itemId: UUID! @fdc_generated(from: "LoadingPlanItem.item", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `LoadingPlanItem`.`loadingPlan`. It must match the value of `LoadingPlan`.`id`. See `@ref` for how to customize it.
+  """
+  loadingPlanId: UUID! @fdc_generated(from: "LoadingPlanItem.loadingPlan", purpose: IMPLICIT_REF_FIELD)
+}
+extend type User {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "User", purpose: IMPLICIT_KEY_FIELD)
+}
