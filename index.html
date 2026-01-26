@@ -129,6 +129,74 @@
       class="fixed top-5 right-5 z-50 flex flex-col gap-2"
     ></div>
 
+    <!-- Status de Conexão / Erro -->
+    <div
+      id="connectionStatus"
+      class="hidden bg-stone-200 text-stone-600 text-xs text-center py-2 px-4 transition-colors duration-300 no-print flex justify-center items-center gap-2 font-medium border-b border-stone-300"
+    >
+      <i class="fa-solid fa-circle-notch fa-spin"></i>
+      <span>A conectar...</span>
+    </div>
+
+    <!-- Config Modal -->
+    <div
+      id="configModal"
+      class="fixed inset-0 z-50 hidden flex items-center justify-center modal-overlay p-4"
+    >
+      <div
+        class="bg-white rounded-xl shadow-2xl w-full max-w-md overflow-hidden flex flex-col max-h-[90vh]"
+      >
+        <div class="bg-stone-800 px-6 py-4 flex justify-between items-center">
+          <h3 class="text-white font-bold text-lg">
+            <i class="fa-solid fa-database mr-2"></i>Gestão de Conexão
+          </h3>
+          <button
+            onclick="window.closeConfigModal()"
+            class="text-stone-400 hover:text-white transition"
+          >
+            <i class="fa-solid fa-xmark text-xl"></i>
+          </button>
+        </div>
+        <div class="p-6 space-y-4 overflow-y-auto custom-scrollbar">
+          <!-- Status Box -->
+          <div
+            id="statusBox"
+            class="bg-stone-100 p-4 rounded text-sm text-stone-700 font-mono text-xs break-all border border-stone-200"
+          >
+            A aguardar diagnóstico...
+          </div>
+
+          <div class="border-t border-stone-200 pt-4 space-y-2">
+            <h4 class="font-semibold text-stone-700 text-sm">
+              Opções de Recuperação
+            </h4>
+
+            <button
+              onclick="window.forceRetry()"
+              class="w-full flex justify-center items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition"
+            >
+              <i class="fa-solid fa-rotate-right"></i> Tentar Reconectar
+            </button>
+
+            <button
+              onclick="window.populateDatabase()"
+              class="w-full flex justify-center items-center gap-2 px-4 py-2 bg-wood-100 hover:bg-wood-200 text-wood-800 rounded-lg text-sm font-medium transition border border-wood-200"
+            >
+              <i class="fa-solid fa-cloud-arrow-up"></i> Povoar BD (Criar
+              coleção)
+            </button>
+
+            <button
+              onclick="window.forceLocalMode()"
+              class="w-full flex justify-center items-center gap-2 px-4 py-2 bg-stone-200 hover:bg-stone-300 text-stone-700 rounded-lg text-sm font-medium transition"
+            >
+              <i class="fa-solid fa-hard-drive"></i> Forçar Modo Local (Offline)
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Auth Modal (Login/Registo) -->
     <div
       id="authModal"
@@ -356,14 +424,12 @@
                     id="desc"
                     list="wood-types"
                     class="pl-9 block w-full rounded-lg border-stone-200 bg-stone-50 border focus:bg-white focus:border-wood-500 focus:ring-wood-500 sm:text-sm p-2.5 transition"
-                    placeholder="Ex: Prancha Freijó"
+                    value="Prancha de Madeira"
                     required
                   />
                 </div>
                 <datalist id="wood-types">
-                  <option value="Prancha Cedrinho"></option>
-                  <option value="Prancha Freijó"></option>
-                  <option value="Prancha Ipê"></option>
+                  <option value="Prancha de Madeira"></option>
                 </datalist>
               </div>
               <div class="grid grid-cols-2 gap-4">
@@ -952,7 +1018,8 @@
         document.getElementById("width").value = "";
         document.getElementById("thickness").value = "";
         document.getElementById("qty").value = "1";
-        if (fullClear) document.getElementById("desc").value = "";
+        if (fullClear)
+          document.getElementById("desc").value = "Prancha de Madeira";
         document.getElementById("desc").focus();
       }
 
