@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-PT">
   <head>
     <meta charset="UTF-8" />
@@ -129,68 +129,93 @@
       class="fixed top-5 right-5 z-50 flex flex-col gap-2"
     ></div>
 
-    <!-- Status de Conexão / Erro -->
+    <!-- Auth Modal (Login/Registo) -->
     <div
-      id="connectionStatus"
-      class="hidden bg-stone-200 text-stone-600 text-xs text-center py-2 px-4 transition-colors duration-300 no-print flex justify-center items-center gap-2 font-medium border-b border-stone-300"
-    >
-      <i class="fa-solid fa-circle-notch fa-spin"></i>
-      <span>A conectar...</span>
-    </div>
-
-    <!-- Config Modal -->
-    <div
-      id="configModal"
+      id="authModal"
       class="fixed inset-0 z-50 hidden flex items-center justify-center modal-overlay p-4"
     >
       <div
-        class="bg-white rounded-xl shadow-2xl w-full max-w-md overflow-hidden flex flex-col max-h-[90vh]"
+        class="bg-white rounded-xl shadow-2xl w-full max-w-sm overflow-hidden flex flex-col"
       >
-        <div class="bg-stone-800 px-6 py-4 flex justify-between items-center">
-          <h3 class="text-white font-bold text-lg">
-            <i class="fa-solid fa-database mr-2"></i>Gestão de Conexão
-          </h3>
-          <button
-            onclick="window.closeConfigModal()"
-            class="text-stone-400 hover:text-white transition"
-          >
-            <i class="fa-solid fa-xmark text-xl"></i>
-          </button>
-        </div>
-        <div class="p-6 space-y-4 overflow-y-auto custom-scrollbar">
-          <!-- Status Box -->
+        <div class="bg-wood-700 px-6 py-6 text-center">
           <div
-            id="statusBox"
-            class="bg-stone-100 p-4 rounded text-sm text-stone-700 font-mono text-xs break-all border border-stone-200"
+            class="inline-block p-3 bg-wood-600 rounded-full mb-2 shadow-inner"
           >
-            A aguardar diagnóstico...
+            <i class="fa-solid fa-tree text-3xl text-white"></i>
           </div>
+          <h3 class="text-white font-bold text-xl" id="authTitle">Bem-vindo</h3>
+          <p class="text-wood-200 text-xs mt-1">
+            Gestão Profissional de Madeira
+          </p>
+        </div>
 
-          <div class="border-t border-stone-200 pt-4 space-y-2">
-            <h4 class="font-semibold text-stone-700 text-sm">
-              Opções de Recuperação
-            </h4>
+        <div class="p-6 space-y-4">
+          <form
+            id="authForm"
+            onsubmit="
+              event.preventDefault();
+              window.handleAuthSubmit();
+            "
+          >
+            <div class="space-y-3">
+              <div>
+                <label
+                  class="block text-xs font-bold text-stone-500 uppercase mb-1"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  id="emailInput"
+                  class="w-full rounded-lg border-stone-300 focus:ring-wood-500 focus:border-wood-500 p-2.5 text-sm"
+                  placeholder="seu@email.com"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  class="block text-xs font-bold text-stone-500 uppercase mb-1"
+                  >Senha</label
+                >
+                <input
+                  type="password"
+                  id="passwordInput"
+                  class="w-full rounded-lg border-stone-300 focus:ring-wood-500 focus:border-wood-500 p-2.5 text-sm"
+                  placeholder="******"
+                  required
+                  minlength="6"
+                />
+              </div>
+            </div>
+
+            <div
+              id="authErrorMsg"
+              class="hidden mt-3 text-xs text-red-600 bg-red-50 p-2 rounded border border-red-100 font-medium"
+            ></div>
 
             <button
-              onclick="window.forceRetry()"
-              class="w-full flex justify-center items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition"
+              type="submit"
+              id="authActionBtn"
+              class="w-full mt-6 bg-wood-600 hover:bg-wood-700 text-white font-bold py-2.5 rounded-lg transition shadow-md flex justify-center items-center gap-2"
             >
-              <i class="fa-solid fa-rotate-right"></i> Tentar Reconectar
+              <span>Entrar</span> <i class="fa-solid fa-arrow-right"></i>
             </button>
+          </form>
 
-            <button
-              onclick="window.populateDatabase()"
-              class="w-full flex justify-center items-center gap-2 px-4 py-2 bg-wood-100 hover:bg-wood-200 text-wood-800 rounded-lg text-sm font-medium transition border border-wood-200"
-            >
-              <i class="fa-solid fa-cloud-arrow-up"></i> Povoar BD (Criar
-              coleção)
-            </button>
-
+          <div class="text-center pt-2 border-t border-stone-100">
+            <p class="text-sm text-stone-500" id="authSwitchText">
+              Ainda não tem conta?
+              <button
+                onclick="window.toggleAuthMode()"
+                class="text-wood-600 font-bold hover:underline"
+              >
+                Criar conta
+              </button>
+            </p>
             <button
               onclick="window.forceLocalMode()"
-              class="w-full flex justify-center items-center gap-2 px-4 py-2 bg-stone-200 hover:bg-stone-300 text-stone-700 rounded-lg text-sm font-medium transition"
+              class="mt-4 text-xs text-stone-400 hover:text-stone-600 underline"
             >
-              <i class="fa-solid fa-hard-drive"></i> Forçar Modo Local (Offline)
+              Continuar Offline (Sem sincronização)
             </button>
           </div>
         </div>
@@ -218,13 +243,13 @@
                 >Cubagem<span class="text-wood-600">Pro</span></span
               >
               <span
-                id="systemModeLabel"
-                class="text-[10px] text-stone-400 uppercase tracking-widest font-semibold mt-0.5"
-                >Sistema</span
+                id="userEmailLabel"
+                class="text-[10px] text-stone-400 uppercase tracking-widest font-semibold mt-0.5 truncate max-w-[120px]"
+                >Offline</span
               >
             </div>
           </div>
-          <div class="flex items-center gap-4">
+          <div class="flex items-center gap-2 sm:gap-4">
             <div class="text-right hidden sm:block">
               <p class="text-xs text-stone-400 uppercase font-semibold">
                 Volume Total
@@ -237,16 +262,27 @@
               </p>
             </div>
             <div class="h-8 w-px bg-stone-200 hidden sm:block"></div>
+
             <button
-              onclick="window.openConfigModal()"
-              class="text-stone-500 hover:text-wood-600 transition"
-              title="Configurações"
+              onclick="window.logout()"
+              id="logoutBtn"
+              class="hidden text-stone-500 hover:text-wood-600 transition"
+              title="Sair"
             >
-              <i class="fa-solid fa-gear"></i>
+              <i class="fa-solid fa-right-from-bracket"></i>
             </button>
+
+            <button
+              onclick="window.openAuthModal()"
+              id="loginBtn"
+              class="text-wood-600 hover:text-wood-800 transition font-medium text-sm border border-wood-200 bg-wood-50 px-3 py-1 rounded-lg"
+            >
+              Entrar
+            </button>
+
             <button
               onclick="window.clearAll()"
-              class="text-stone-500 hover:text-red-600 transition"
+              class="text-stone-500 hover:text-red-600 transition p-2"
               title="Limpar Tudo"
             >
               <i class="fa-solid fa-trash-can"></i>
@@ -298,7 +334,10 @@
             </div>
             <form
               id="woodForm"
-              onsubmit="event.preventDefault(); window.handleSubmit();"
+              onsubmit="
+                event.preventDefault();
+                window.handleSubmit();
+              "
               class="p-6 space-y-4"
             >
               <input type="hidden" id="editId" value="" />
@@ -542,11 +581,13 @@
       import {
         initializeApp,
         getApps,
+        getApp,
       } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
       import {
         getAuth,
-        signInWithCustomToken,
-        signInAnonymously,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+        signOut,
         onAuthStateChanged,
       } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
       import {
@@ -565,198 +606,164 @@
       } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
       // =========================================================================
-      // CONFIGURAÇÃO DO FIREBASE (cubagem-pro)
+      // CONFIGURAÇÃO DO FIREBASE (cubagempro)
       // =========================================================================
       const firebaseConfig = {
-        apiKey: "AIzaSyDtS2o4Cbtgpl5UcXAQZ11ClzeIAokMiBs",
-        authDomain: "cubagem-pro.firebaseapp.com",
-        projectId: "cubagem-pro",
-        storageBucket: "cubagem-pro.firebasestorage.app",
-        messagingSenderId: "47902178262",
-        appId: "1:47902178262:web:22642c72baac9d82c54277",
+        apiKey: "AIzaSyBTh5AkFbeg_QZqLND12t62ST-aPKxZriA",
+        authDomain: "cubagempro.firebaseapp.com",
+        projectId: "cubagempro",
+        storageBucket: "cubagempro.firebasestorage.app",
+        messagingSenderId: "136448783606",
+        appId: "1:136448783606:web:a2122e6ee0ed89099668d7",
       };
 
-      // Initialize Firebase logic inside initApp to prevent conflicts
       let items = [];
       let isEditing = false;
       let useLocalStorage = false;
       let app, auth, db, currentUser, unsubscribe;
+      let isRegistering = false; // Estado do modal (Login vs Registo)
 
-      const statusEl = document.getElementById("connectionStatus");
+      // UI Elements
       const statusDot = document.getElementById("statusDot");
-      const labelEl = document.getElementById("systemModeLabel");
-      const modalEl = document.getElementById("configModal");
-      const statusBox = document.getElementById("statusBox");
+      const userEmailLabel = document.getElementById("userEmailLabel");
+      const modalEl = document.getElementById("authModal");
+      const loginBtn = document.getElementById("loginBtn");
+      const logoutBtn = document.getElementById("logoutBtn");
+      const authTitle = document.getElementById("authTitle");
+      const authActionBtn = document.getElementById("authActionBtn");
+      const authSwitchText = document.getElementById("authSwitchText");
+      const errorMsg = document.getElementById("authErrorMsg");
 
-      window.openConfigModal = function () {
+      // Modal Logic
+      window.openAuthModal = function () {
         modalEl.classList.remove("hidden");
+        isRegistering = false;
+        updateAuthUI();
       };
-      window.closeConfigModal = function () {
+
+      window.closeAuthModal = function () {
         modalEl.classList.add("hidden");
       };
 
-      window.forceRetry = function () {
-        window.closeConfigModal();
-        useLocalStorage = false;
-        initApp();
+      window.toggleAuthMode = function () {
+        isRegistering = !isRegistering;
+        updateAuthUI();
+      };
+
+      function updateAuthUI() {
+        errorMsg.classList.add("hidden");
+        if (isRegistering) {
+          authTitle.innerText = "Criar Conta";
+          authActionBtn.innerHTML = `<span>Registar</span> <i class="fa-solid fa-user-plus"></i>`;
+          authSwitchText.innerHTML = `Já tem conta? <button onclick="window.toggleAuthMode()" class="text-wood-600 font-bold hover:underline">Entrar</button>`;
+        } else {
+          authTitle.innerText = "Bem-vindo de volta";
+          authActionBtn.innerHTML = `<span>Entrar</span> <i class="fa-solid fa-arrow-right"></i>`;
+          authSwitchText.innerHTML = `Ainda não tem conta? <button onclick="window.toggleAuthMode()" class="text-wood-600 font-bold hover:underline">Criar conta</button>`;
+        }
+      }
+
+      window.handleAuthSubmit = async function () {
+        const email = document.getElementById("emailInput").value;
+        const password = document.getElementById("passwordInput").value;
+        errorMsg.classList.add("hidden");
+
+        authActionBtn.innerHTML =
+          '<i class="fa-solid fa-circle-notch fa-spin"></i> A processar...';
+
+        try {
+          if (isRegistering) {
+            await createUserWithEmailAndPassword(auth, email, password);
+            window.showToast("Conta criada com sucesso!", "success");
+          } else {
+            await signInWithEmailAndPassword(auth, email, password);
+            window.showToast("Login efetuado!", "success");
+          }
+          window.closeAuthModal();
+        } catch (error) {
+          console.error(error);
+          let msg = "Erro ao autenticar.";
+          if (error.code === "auth/wrong-password") msg = "Senha incorreta.";
+          if (error.code === "auth/user-not-found")
+            msg = "Utilizador não encontrado.";
+          if (error.code === "auth/email-already-in-use")
+            msg = "Este email já está registado.";
+          if (error.code === "auth/weak-password")
+            msg = "A senha deve ter pelo menos 6 caracteres.";
+          if (error.code === "auth/invalid-email") msg = "Email inválido.";
+
+          errorMsg.innerText = msg;
+          errorMsg.classList.remove("hidden");
+        } finally {
+          updateAuthUI(); // Reset button text
+        }
+      };
+
+      window.logout = async function () {
+        await signOut(auth);
+        window.showToast("Sessão terminada.", "info");
       };
 
       window.forceLocalMode = function () {
-        window.closeConfigModal();
+        window.closeAuthModal();
+        useLocalStorage = true;
         initLocalStorage();
       };
 
-      window.populateDatabase = async function () {
-        if (useLocalStorage || !db || !currentUser) {
-          alert("Erro: Precisa estar conectado e autenticado.");
-          return;
-        }
-        if (!confirm("Adicionar dados de exemplo?")) return;
-        try {
-          const sampleData = [
-            {
-              desc: "Prancha Freijó",
-              length: 4.31,
-              width: 0.34,
-              thickness: 0.08,
-              qty: 1,
-              volume: 0.117232,
-            },
-            {
-              desc: "Viga Angelim",
-              length: 6.0,
-              width: 0.15,
-              thickness: 0.15,
-              qty: 4,
-              volume: 0.54,
-            },
-          ];
-          const batch = writeBatch(db);
-          // Simple Path for user config
-          const colPath = collection(
-            db,
-            "users",
-            currentUser.uid,
-            "cubagem_items"
-          );
-          sampleData.forEach((item) => {
-            const docRef = doc(colPath);
-            batch.set(docRef, {
-              ...item,
-              updatedAt: Date.now(),
-              createdAt: Date.now(),
-            });
-          });
-          await batch.commit();
-          alert("Dados enviados!");
-          window.closeConfigModal();
-        } catch (e) {
-          logError(e);
-          alert("Erro ao gravar. Veja o diagnóstico nas configurações.");
-        }
-      };
+      // --- System State & Init ---
 
-      function logError(e) {
-        console.error(e);
-        let msg = e.message || e.toString();
-
-        // Diagnóstico de erros comuns do Firebase
-        if (e.code === "permission-denied") {
-          msg =
-            "ERRO DE PERMISSÃO: O banco de dados recusou a conexão.<br>SOLUÇÃO: Vá a Console > Firestore Database > Rules e altere para 'allow read, write: if true;'";
-        } else if (e.code === "auth/operation-not-allowed") {
-          msg =
-            "ERRO DE LOGIN: Autenticação Anónima não ativada.<br>SOLUÇÃO: Vá a Console > Authentication > Sign-in method e ative 'Anonymous'.";
-        } else if (
-          e.code === "auth/configuration-not-found" ||
-          e.code === "auth/invalid-api-key"
-        ) {
-          msg =
-            "ERRO CONFIG: Chave API inválida ou Auth não ativado no Firebase Console.";
-        }
-
-        // Exibir na Barra de Topo
-        statusEl.classList.remove("hidden");
-        statusEl.className =
-          "bg-red-600 text-white text-xs text-center py-2 px-4 no-print flex justify-between items-center";
-        statusEl.innerHTML = `
-                <div class="flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation"></i> <span>${msg}</span></div>
-                <button onclick="window.forceLocalMode()" class="bg-white text-red-600 px-2 py-1 rounded hover:bg-gray-100 font-bold ml-2">Usar Local</button>
-            `;
-
-        // Exibir no Modal
-        statusBox.innerHTML = `<span class='text-red-600 font-bold'>ERRO:</span> ${msg}`;
-        statusBox.className =
-          "bg-red-50 p-4 rounded text-xs text-red-800 font-mono break-all border border-red-200";
-      }
-
-      function setSystemMode(mode) {
-        statusEl.classList.remove("hidden");
+      function setSystemMode(mode, userEmail = null) {
         if (mode === "cloud") {
           useLocalStorage = false;
-          statusEl.className =
-            "bg-emerald-100 text-emerald-800 text-xs text-center py-1 no-print flex justify-center items-center gap-2";
-          statusEl.innerHTML =
-            '<i class="fa-solid fa-wifi"></i> Conectado à Cloud (Firebase)';
           statusDot.className =
             "absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-white animate-pulse";
-          labelEl.innerText = "Cloud System";
-          statusBox.innerHTML =
-            "<span class='text-green-600'>Conectado e Operacional.</span>";
-          setTimeout(() => statusEl.classList.add("hidden"), 3000);
-        } else if (mode.includes("error")) {
-          // Visual state for error
+          userEmailLabel.innerText = userEmail
+            ? userEmail.split("@")[0]
+            : "Online";
+          userEmailLabel.title = userEmail;
+          loginBtn.classList.add("hidden");
+          logoutBtn.classList.remove("hidden");
         } else {
           useLocalStorage = true;
-          statusEl.className =
-            "bg-blue-100 text-blue-800 text-xs text-center py-1 no-print flex justify-center items-center gap-2";
-          statusEl.innerHTML =
-            '<i class="fa-solid fa-hard-drive"></i> Modo Local (Dados no Navegador)';
           statusDot.className =
-            "absolute -top-1 -right-1 w-3 h-3 bg-blue-500 rounded-full border-2 border-white";
-          labelEl.innerText = "Local System";
-          statusBox.innerHTML =
-            "<span class='text-orange-600'>Modo Local Ativo.</span>";
+            "absolute -top-1 -right-1 w-3 h-3 bg-gray-400 rounded-full border-2 border-white";
+          userEmailLabel.innerText = "Offline";
+          loginBtn.classList.remove("hidden");
+          logoutBtn.classList.add("hidden");
         }
       }
 
       async function initApp() {
         try {
-          // Previne duplicação de inicialização
-          if (getApps().length === 0) {
-            app = initializeApp(firebaseConfig);
-          } else {
-            app = getApps()[0];
-          }
+          const appName = "CubagemProApp";
+          const existingApps = getApps().filter((a) => a.name === appName);
+          if (existingApps.length > 0) app = getApp(appName);
+          else app = initializeApp(firebaseConfig, appName);
 
           auth = getAuth(app);
           db = getFirestore(app);
-
-          // Try auth
-          try {
-            await signInAnonymously(auth);
-          } catch (authErr) {
-            console.error("Auth falhou, a mudar para local:", authErr);
-            // Force local mode on auth error without blocking app
-            useLocalStorage = true;
-            initLocalStorage();
-            // Optional: Show specific message but allow work
-            window.showToast("Modo Offline (Erro Autenticação)", "error");
-            return;
-          }
 
           onAuthStateChanged(auth, (user) => {
             if (user) {
               currentUser = user;
               setupRealtimeListener(user.uid);
+              setSystemMode("cloud", user.email);
             } else {
-              // Fallback
-              useLocalStorage = true;
-              initLocalStorage();
+              // Se não houver user, NÃO forçamos login anónimo.
+              // Perguntamos ao utilizador.
+              currentUser = null;
+              if (unsubscribe) unsubscribe();
+
+              // Verifica se queríamos estar offline
+              if (!useLocalStorage) {
+                window.openAuthModal();
+              } else {
+                initLocalStorage();
+              }
             }
           });
         } catch (e) {
-          console.error("Erro geral, a mudar para local:", e);
+          console.error("Erro init:", e);
           useLocalStorage = true;
           initLocalStorage();
         }
@@ -770,9 +777,7 @@
       }
 
       function setupRealtimeListener(userId) {
-        setSystemMode("cloud");
         if (unsubscribe) unsubscribe();
-
         // Path: users/{uid}/cubagem_items
         const q = query(collection(db, "users", userId, "cubagem_items"));
 
@@ -786,9 +791,14 @@
             window.renderTable();
           },
           (error) => {
-            logError(error);
-            // Don't fall back here to let user see permission errors
-          }
+            console.error(error);
+            if (error.code === "permission-denied") {
+              alert(
+                "Atenção: Permissões insuficientes no Firebase. Verifique se as Regras (Rules) estão em modo de teste.",
+              );
+            }
+            window.forceLocalMode();
+          },
         );
       }
 
@@ -798,7 +808,7 @@
         const length = parseFloat(document.getElementById("length").value);
         const width = parseFloat(document.getElementById("width").value);
         const thickness = parseFloat(
-          document.getElementById("thickness").value
+          document.getElementById("thickness").value,
         );
         const qty = parseInt(document.getElementById("qty").value);
         const editId = document.getElementById("editId").value;
@@ -856,7 +866,8 @@
               resetForm(false);
             }
           } catch (e) {
-            logError(e);
+            console.error(e);
+            window.showToast("Erro ao guardar. Verifique permissões.", "error");
           }
         }
       };
@@ -871,7 +882,7 @@
             const colPath = ["users", currentUser.uid, "cubagem_items"];
             await deleteDoc(doc(db, ...colPath, id));
           } catch (e) {
-            logError(e);
+            console.error(e);
           }
         }
         if (isEditing) window.cancelEdit();
@@ -887,14 +898,14 @@
           try {
             const batch = writeBatch(db);
             const q = query(
-              collection(db, "users", currentUser.uid, "cubagem_items")
+              collection(db, "users", currentUser.uid, "cubagem_items"),
             );
             const snapshot = await getDocs(q);
             snapshot.forEach((doc) => batch.delete(doc.ref));
             await batch.commit();
             window.showToast("Limpo (Cloud)", "success");
           } catch (e) {
-            logError(e);
+            console.error(e);
           }
         }
         window.cancelEdit();
@@ -912,9 +923,7 @@
         document.getElementById("editId").value = item.id;
         document.getElementById("formTitle").textContent = "Editar Entrada";
         const btn = document.getElementById("submitBtn");
-        btn.innerHTML = `<i class="fa-solid ${
-          useLocalStorage ? "fa-floppy-disk" : "fa-cloud-arrow-up"
-        }"></i> <span>Salvar Alterações</span>`;
+        btn.innerHTML = `<i class="fa-solid ${useLocalStorage ? "fa-floppy-disk" : "fa-cloud-arrow-up"}"></i> <span>Salvar Alterações</span>`;
         btn.classList.remove("bg-wood-600", "hover:bg-wood-700");
         btn.classList.add("bg-blue-600", "hover:bg-blue-700");
         document.getElementById("cancelEditBtn").classList.remove("hidden");
@@ -956,17 +965,13 @@
         let totalVol = 0;
         let totalQtd = 0;
         const filteredItems = items.filter((item) =>
-          item.desc.toLowerCase().includes(filterText)
+          item.desc.toLowerCase().includes(filterText),
         );
         filteredItems.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
 
         if (filteredItems.length === 0) {
           const icon = useLocalStorage ? "fa-hard-drive" : "fa-cloud";
-          tbody.innerHTML = `<tr><td colspan="5" class="px-6 py-12 text-center text-stone-400"><div class="flex flex-col items-center"><i class="fa-solid ${icon} text-4xl mb-3 opacity-20"></i><p>${
-            items.length === 0
-              ? "A lista está vazia."
-              : "Nenhum resultado encontrado."
-          }</p></div></td></tr>`;
+          tbody.innerHTML = `<tr><td colspan="5" class="px-6 py-12 text-center text-stone-400"><div class="flex flex-col items-center"><i class="fa-solid ${icon} text-4xl mb-3 opacity-20"></i><p>${items.length === 0 ? "A lista está vazia." : "Nenhum resultado encontrado."}</p></div></td></tr>`;
         } else {
           filteredItems.forEach((item) => {
             totalVol += item.volume;
@@ -974,28 +979,14 @@
             const row = document.createElement("tr");
             row.className = "hover:bg-stone-50 transition group";
             row.innerHTML = `
-                        <td class="px-6 py-4 whitespace-nowrap text-stone-900 font-medium">${
-                          item.desc
-                        }</td>
-                        <td class="px-3 py-4 whitespace-nowrap text-center text-stone-500 font-mono text-xs">${item.length.toFixed(
-                          2
-                        )} x ${item.width.toFixed(
-              2
-            )} x ${item.thickness.toFixed(2)}</td>
-                        <td class="px-3 py-4 whitespace-nowrap text-center text-stone-700 font-bold">${
-                          item.qty
-                        }</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-stone-900 font-mono font-bold">${item.volume.toFixed(
-                          2
-                        )}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-stone-900 font-medium">${item.desc}</td>
+                        <td class="px-3 py-4 whitespace-nowrap text-center text-stone-500 font-mono text-xs">${item.length.toFixed(2)} x ${item.width.toFixed(2)} x ${item.thickness.toFixed(2)}</td>
+                        <td class="px-3 py-4 whitespace-nowrap text-center text-stone-700 font-bold">${item.qty}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-stone-900 font-mono font-bold">${item.volume.toFixed(2)}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-center no-print">
                             <div class="flex justify-center gap-2 opacity-50 group-hover:opacity-100 transition">
-                                <button onclick="window.editItem('${
-                                  item.id
-                                }')" class="text-blue-500 hover:text-blue-700 p-1" title="Editar"><i class="fa-solid fa-pen"></i></button>
-                                <button onclick="window.deleteItem('${
-                                  item.id
-                                }')" class="text-red-400 hover:text-red-600 p-1" title="Eliminar"><i class="fa-solid fa-trash"></i></button>
+                                <button onclick="window.editItem('${item.id}')" class="text-blue-500 hover:text-blue-700 p-1" title="Editar"><i class="fa-solid fa-pen"></i></button>
+                                <button onclick="window.deleteItem('${item.id}')" class="text-red-400 hover:text-red-600 p-1" title="Eliminar"><i class="fa-solid fa-trash"></i></button>
                             </div>
                         </td>`;
             tbody.appendChild(row);
@@ -1036,14 +1027,14 @@
           type === "error"
             ? "bg-red-500"
             : type === "info"
-            ? "bg-stone-600"
-            : "bg-emerald-600";
+              ? "bg-stone-600"
+              : "bg-emerald-600";
         let icon =
           type === "error"
             ? "fa-circle-exclamation"
             : type === "info"
-            ? "fa-circle-info"
-            : "fa-check-circle";
+              ? "fa-circle-info"
+              : "fa-check-circle";
         toast.className = `${bgClass} text-white px-6 py-3 rounded-lg shadow-lg flex items-center gap-3 min-w-[300px] toast-enter`;
         toast.innerHTML = `<i class="fa-solid ${icon}"></i><span class="font-medium text-sm">${message}</span>`;
         container.appendChild(toast);
@@ -1060,7 +1051,7 @@
         }
         let csv = [];
         csv.push(
-          "\uFEFFDescricao;Comprimento;Largura;Espessura;Quantidade;Volume M3"
+          "\uFEFFDescricao;Comprimento;Largura;Espessura;Quantidade;Volume M3",
         );
         items.forEach((item) => {
           let row = [
