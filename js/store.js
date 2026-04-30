@@ -1,0 +1,135 @@
+import {
+  collection,
+  doc,
+  addDoc,
+  deleteDoc,
+  updateDoc,
+  onSnapshot,
+  query,
+  writeBatch,
+  getDocs,
+} from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+let items = [];
+let useLocalStorage = false;
+let db = null;
+let currentUser = null;
+let unsubscribe = null;
+let onDataChangedCallback = null;
+
+export function initStore(firestoreDb) {
+  db = firestoreDb;
+}
+
+export function setStoreUser(user) {
+  currentUser = user;
+}
+
+export function setLocalMode(isLocal) {
+  useLocalStorage = isLocal;
+}
+
+export function isLocalMode() {
+  return useLocalStorage;
+}
+
+export function getItems() {
+  return items;
+}
+
+export function setOnDataChanged(callback) {
+  onDataChangedCallback = callback;
+}
+
+function notifyDataChanged() {
+  if (onDataChangedCallback) onDataChangedCallback();
+}
+
+export function loadLocalData() {
+  const data = localStorage.getItem("cubagempro_local_v1");
+  items = data ? JSON.parse(data) : [];
+  notifyDataChanged();
+}
+
+function saveLocal() {
+  try {
+    localStorage.setItem("cubagempro_local_v1", JSON.stringify(items));
+  } catch (error) {
+    console.error("Armazenamento local cheio:", error);
+    throw new Error("local_storage_full");
+  }
+  notifyDataChanged();
+}
+
+export function setupRealtimeSync(userId, onError) {
+  if (unsubscribe) unsubscribe();
+  const q = query(collection(db, "users", userId, "cubagem_items"));
+
+  unsubscribe = onSnapshot(
+    q,
+    (snapshot) => {
+      items = [];
+      snapshot.forEach((doc) => {
+        items.push({ id: doc.id, ...doc.data() });
+      });
+      notifyDataChanged();
+    },
+    (error) => {
+      if (onError) onError(error);
+    },
+  );
+}
+
+export function stopRealtimeSync() {
+  if (unsubscribe) {
+    unsubscribe();
+    unsubscribe = null;
+  }
+}
+
+export async function addItem(itemData) {
+  if (useLocalStorage) {
+    itemData.id = Date.now().toString();
+    items.push(itemData);
+    saveLocal();
+  } else {
+    const colPath = ["users", currentUser.uid, "cubagem_items"];
+    const colRef = collection(db, ...colPath);
+    await addDoc(colRef, itemData);
+  }
+}
+
+export async function updateItem(id, itemData) {
+  if (useLocalStorage) {
+    const idx = items.findIndex((i) => i.id == id);
+    if (idx !== -1) items[idx] = { ...items[idx], ...itemData };
+    saveLocal();
+  } else {
+    const colPath = ["users", currentUser.uid, "cubagem_items"];
+    const docRef = doc(db, ...colPath, id);
+    await updateDoc(docRef, itemData);
+  }
+}
+
+export async function deleteItemFromStore(id) {
+  if (useLocalStorage) {
+    items = items.filter((i) => i.id != id);
+    saveLocal();
+  } else {
+    const colPath = ["users", currentUser.uid, "cubagem_items"];
+    await deleteDoc(doc(db, ...colPath, id));
+  }
+}
+
+export async function clearAllItems() {
+  if (useLocalStorage) {
+    items = [];
+    saveLocal();
+  } else {
+    const batch = writeBatch(db);
+    const q = query(collection(db, "users", currentUser.uid, "cubagem_items"));
+    const snapshot = await getDocs(q);
+    snapshot.forEach((doc) => batch.delete(doc.ref));
+    await batch.commit();
+  }
+}
